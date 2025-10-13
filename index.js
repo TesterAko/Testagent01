@@ -1,6 +1,5 @@
 ﻿// index.js (ESM)
 // index.js – ergänze am Anfang nach dotenv.config() und ENV-Read:
-import { config } from './config/config.js';
 import dotenv from 'dotenv';
 import readlineSync from 'readline-sync';
 import OpenAI from 'openai';
@@ -85,19 +84,18 @@ async function main() {
     console.log('99. Learn-Modus');
     const modeInput = readlineSync.question('> ').trim();
 
-    // Optional: kleiner Kontext, der dem LLM mitgegeben wird (z. B. Seite/Modul)
-    const contextSummary = readlineSync.question('📝 Kurzer Kontext (optional, Enter für leer): ').trim();
-
     try {
         if (modeInput === '1') {
-            // Erwartet, dass runExploration({ page, llm, contextSummary }) kann
-            await runExploration({ page, llm, contextSummary });
+            console.log('🧭 Starte explorativen Modus mit automatischem Login...');
+            await runExploration({ page, llm });
         } else if (modeInput === '2') {
+            const contextSummary = readlineSync.question('📝 Kurzer Kontext (optional, Enter für leer): ').trim();
             // Hole ggf. Story-Text
             const story = readlineSync.question('📖 User Story / Akzeptanzkriterien (kurz): ').trim();
             // Falls dein story.js selbst das LLM nutzt, einfach story dort verarbeiten.
             await runUserStory({ page, llm, contextSummary, story });
         } else if (modeInput === '99') {
+            const contextSummary = readlineSync.question('📝 Kurzer Kontext (optional, Enter für leer): ').trim();
             const topic = readlineSync.question('🎓 Lern-Thema (z. B. "Login & Filter"): ').trim();
             await runLearnMode({ page, llm, contextSummary, topic });
         } else {
@@ -107,36 +105,6 @@ async function main() {
         console.error('❌ Fehler im Testagent:', err);
     } finally {
         await browser.close();
-    }
-
-    // ... später in main():
-    async function main() {
-        const browser = await chromium.launch({ headless: config.headless });
-        const page = await browser.newPage();
-        if (config.baseUrl) {
-            await page.goto(config.baseUrl, { waitUntil: 'load' });
-        }
-
-        try {
-            if (config.mode === 'explore' || process.argv.includes('--explore')) {
-                await runExploration({ page });
-                return;
-            }
-            if (config.mode === 'story' || process.argv.includes('--story')) {
-                // hier ggf. story aus ENV STORY oder Datei lesen
-                await runUserStory({ page, story: process.env.STORY || '' });
-                return;
-            }
-            if (config.mode === 'learn' || process.argv.includes('--learn')) {
-                await runLearnMode({ page, topic: process.env.TOPIC || '' });
-                return;
-            }
-
-            // Fallback: alte Menüführung (nur wenn kein MODE gesetzt)
-            // ... (dein bisheriger readline-Teil)
-        } finally {
-            await browser.close();
-        }
     }
 }
 
