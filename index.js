@@ -21,11 +21,6 @@ const {
     HEADLESS = 'true'
 } = process.env;
 
-if (!OPENAI_API_KEY) {
-    console.error('❌ OPENAI_API_KEY fehlt in .env');
-    process.exit(1);
-}
-
 // --- LLM Wrapper: zentrale Stelle für alle Modellaufrufe ---
 function makeLLM(openai) {
     async function chat({ system, user, temperature = 0.2, model = OPENAI_MODEL }) {
@@ -65,8 +60,18 @@ function makeLLM(openai) {
 
 async function main() {
     console.log('🚀 Starte KI-Testagent...');
-    const openai = new OpenAI({ apiKey: OPENAI_API_KEY });
-    const llm = makeLLM(openai);
+
+    let llmInstance = null;
+    const ensureLLM = () => {
+        if (llmInstance) return llmInstance;
+        if (!OPENAI_API_KEY) {
+            console.error('❌ OPENAI_API_KEY fehlt in .env');
+            return null;
+        }
+        const openai = new OpenAI({ apiKey: OPENAI_API_KEY });
+        llmInstance = makeLLM(openai);
+        return llmInstance;
+    };
 
     // Browser nur einmal starten, Seite teilen
     const browser = await chromium.launch({ headless: HEADLESS !== 'false' });
@@ -82,19 +87,24 @@ async function main() {
     console.log('1. Exploratives Testen');
     console.log('2. User Story Testen');
     console.log('99. Learn-Modus');
-    const modeInput = readlineSync.question('> ').trim();
+    const modeRaw = readlineSync.question('> ').trim();
+    const modeInput = modeRaw === '' ? NaN : Number(modeRaw);
 
     try {
-        if (modeInput === '1') {
+        if (modeInput === 1) {
             console.log('🧭 Starte explorativen Modus mit automatischem Login...');
-            await runExploration({ page, llm });
-        } else if (modeInput === '2') {
+            await runExploration({ page });
+        } else if (modeInput === 2) {
+            const llm = ensureLLM();
+            if (!llm) return;
             const contextSummary = readlineSync.question('📝 Kurzer Kontext (optional, Enter für leer): ').trim();
             // Hole ggf. Story-Text
             const story = readlineSync.question('📖 User Story / Akzeptanzkriterien (kurz): ').trim();
             // Falls dein story.js selbst das LLM nutzt, einfach story dort verarbeiten.
             await runUserStory({ page, llm, contextSummary, story });
-        } else if (modeInput === '99') {
+        } else if (modeInput === 99) {
+            const llm = ensureLLM();
+            if (!llm) return;
             const contextSummary = readlineSync.question('📝 Kurzer Kontext (optional, Enter für leer): ').trim();
             const topic = readlineSync.question('🎓 Lern-Thema (z. B. "Login & Filter"): ').trim();
             await runLearnMode({ page, llm, contextSummary, topic });
