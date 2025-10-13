@@ -121,12 +121,26 @@ export class Explorer {
         this.baseUrl = baseUrl;
         this.headless = headless;
         this.auth = new AuthService();
+        this._attempted = new Map();
     }
 
     async _screenshot(page, label) {
         const file = path.join(SCREEN_DIR, `${Date.now()}_${label || 'shot'}.png`);
         try { await page.screenshot({ path: file, fullPage: true }); } catch { }
         return file;
+    }
+
+    _markAttempt(nodeKey, selector) {
+        if (!selector) return;
+        const set = this._attempted.get(nodeKey) || new Set();
+        set.add(selector);
+        this._attempted.set(nodeKey, set);
+    }
+
+    _wasAttempted(nodeKey, selector) {
+        if (!selector) return false;
+        const set = this._attempted.get(nodeKey);
+        return set ? set.has(selector) : false;
     }
 
     async _recordState(page, extra = {}) {
@@ -152,17 +166,21 @@ export class Explorer {
             .filter(a => !isDestructiveId(a?.id)) // Sicherheitsfilter
             .filter(Boolean);
 
-        return dedupeBySelector(merged).slice(0, limit);
+        const deduped = dedupeBySelector(merged);
+        const fresh = deduped.filter(a => !this._wasAttempted(nodeKey, a.selector));
+        const prioritized = fresh.length ? fresh : deduped;
+
+        return prioritized.slice(0, limit);
     }
 
     async run({ page: extPage } = {}) {
-        let browser, context, page;
+        let browser, page;
 
         try {
             if (!extPage) {
                 browser = await chromium.launch({ headless: this.headless });
-                context = await browser.newContext();
-                page = await context.newPage();
+                const ctx = await browser.newContext();
+                page = await ctx.newPage();
                 await page.goto(this.baseUrl, { waitUntil: 'domcontentloaded', timeout: 60000 });
             } else {
                 page = extPage;
@@ -185,15 +203,25 @@ export class Explorer {
                     break;
                 }
 
-                // Wähle erste sichere Aktion
+                // Wähle erste sichere Aktion und markiere sie, damit wir sie nicht endlos wiederholen
                 const action = plans[0];
+                this._markAttempt(nodeA, action?.selector);
 
                 try {
+                    const ctx = page.context();
+                    const popupPromise = ctx.waitForEvent('page', { timeout: 4000 }).catch(() => null);
+
                     // Execute (immer 1 Aktion, damit Nav-Graph präzise bleibt)
                     await executeActions(page, [action], `auto-step-${step}`);
 
                     // kleine Wartezeit + Netzleerlauf
                     await page.waitForLoadState('networkidle', { timeout: 15000 }).catch(() => { });
+
+                    const popup = await popupPromise;
+                    if (popup) {
+                        await popup.waitForLoadState('domcontentloaded', { timeout: 20000 }).catch(() => { });
+                        page = popup;
+                    }
 
                     // Nachher: neuer Knoten
                     const nodeB = await makeNodeKey(page);
