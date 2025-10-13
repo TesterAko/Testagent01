@@ -1,0 +1,28 @@
+{
+  "name": "testagent",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "dotenv": "^17.2.3",
+    "fs-extra": "^11.3.2",
+    "jsdom": "^27.0.0",
+    "mammoth": "^1.11.0",
+    "openai": "^6.0.1",
+    "pdf2json": "^3.2.2",
+    "pdfjs-dist": "^5.4.149",
+    "playwright": "^1.55.1",
+    "readline-sync": "^1.4.10",
+    "uuid": "^13.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^9.36.0"
+  }
+}

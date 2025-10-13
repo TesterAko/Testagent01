@@ -1,0 +1,254 @@
+[
+  {
+    "tag": "div",
+    "id": "3",
+    "wkradId": "MainApo",
+    "text": "WKRAD NetHelpFavoritenFavoriteNavigationTabItem"
+  },
+  {
+    "tag": "div",
+    "id": null,
+    "wkradId": "MainApo.ThemesManager",
+    "text": ""
+  },
+  {
+    "tag": "div",
+    "id": null,
+    "wkradId": "MainApo.HelpMode",
+    "text": ""
+  },
+  {
+    "tag": "div",
+    "id": "52",
+    "wkradId": "MainApo.Div",
+    "text": "WKRAD NetHelp"
+  },
+  {
+    "tag": "nav",
+    "id": "55",
+    "wkradId": "MainApo.Menu",
+    "text": ""
+  },
+  {
+    "tag": "div",
+    "id": "13",
+    "wkradId": "MainApo.Div(1)",
+    "text": "WKRAD NetHelp"
+  },
+  {
+    "tag": "div",
+    "id": "14",
+    "wkradId": "MainApo.Hyperlinkcontrol",
+    "text": "WKRAD NetHelp"
+  },
+  {
+    "tag": "div",
+    "id": "15",
+    "wkradId": "MainApo.Div(2)",
+    "text": ""
+  },
+  {
+    "tag": "label",
+    "id": "17",
+    "wkradId": "MainApo.Label",
+    "text": ""
+  },
+  {
+    "tag": "label",
+    "id": "1",
+    "wkradId": "MainApo.Label(1)",
+    "text": ""
+  },
+  {
+    "tag": "div",
+    "id": "7",
+    "wkradId": "MainApo.ObjectFrame",
+    "text": "FavoritenFavoriteNavigationTabItem"
+  },
+  {
+    "tag": "button",
+    "id": "18",
+    "wkradId": "MainApo.TechnischerName",
+    "text": ""
+  },
+  {
+    "tag": "button",
+    "id": "20",
+    "wkradId": "MainApo.Hilfe",
+    "text": ""
+  },
+  {
+    "tag": "button",
+    "id": "22",
+    "wkradId": "MainApo.Info",
+    "text": ""
+  },
+  {
+    "tag": "button",
+    "id": "25",
+    "wkradId": "MainApo.Abmelden",
+    "text": ""
+  },
+  {
+    "tag": "div",
+    "id": "10",
+    "wkradId": "MainApo.SideMenu",
+    "text": "FavoritenFavoriteNavigation"
+  },
+  {
+    "tag": "div",
+    "id": "33",
+    "wkradId": "MainApo.TabPanel",
+    "text": "TabItem"
+  },
+  {
+    "tag": "div",
+    "id": "modal_1759582868830",
+    "wkradId": "LoginApo",
+    "text": "BenutzernamePasswortSprache Sprache auswählenSpracheRolle Rolle auswählenRolleOperativer ModusAnmeld"
+  },
+  {
+    "tag": "div",
+    "id": "60",
+    "wkradId": "LoginApo.Image",
+    "text": ""
+  },
+  {
+    "tag": "div",
+    "id": "61",
+    "wkradId": "LoginApo.Div",
+    "text": ""
+  },
+  {
+    "tag": "div",
+    "id": "62",
+    "wkradId": "LoginApo.Div(1)",
+    "text": ""
+  },
+  {
+    "tag": "div",
+    "id": "63",
+    "wkradId": "LoginApo.Div(2)",
+    "text": ""
+  },
+  {
+    "tag": "div",
+    "id": "64",
+    "wkradId": "LoginApo.HBFPanel",
+    "text": "BenutzernamePasswortSprache Sprache auswählenSpracheRolle Rolle auswählenRolleOperativer ModusAnmeld"
+  },
+  {
+    "tag": "div",
+    "id": "65",
+    "wkradId": "LoginApo.PanelHeader(1)",
+    "text": ""
+  },
+  {
+    "tag": "div",
+    "id": "66",
+    "wkradId": "LoginApo.PanelBody(1)",
+    "text": "BenutzernamePasswortSprache Sprache auswählenSpracheRolle Rolle auswählenRolleOperativer ModusAnmeld"
+  },
+  {
+    "tag": "div",
+    "id": "68",
+    "wkradId": "LoginApo.Benutzername",
+    "text": "Benutzername"
+  },
+  {
+    "tag": "input",
+    "id": "I68",
+    "wkradId": "LoginApo.Benutzername.Input",
+    "text": ""
+  },
+  {
+    "tag": "div",
+    "id": "70",
+    "wkradId": "LoginApo.Passwort",
+    "text": "Passwort"
+  },
+  {
+    "tag": "input",
+    "id": "I70",
+    "wkradId": "LoginApo.Passwort.Input",
+    "text": ""
+  },
+  {
+    "tag": "div",
+    "id": "72",
+    "wkradId": "LoginApo.dboLanguageCode",
+    "text": "Sprache Sprache auswählenSprache"
+  },
+  {
+    "tag": "input",
+    "id": "I72",
+    "wkradId": "LoginApo.dboLanguageCode.Input",
+    "text": ""
+  },
+  {
+    "tag": "button",
+    "id": "B72",
+    "wkradId": "LoginApo.dboLanguageCode.button",
+    "text": ""
+  },
+  {
+    "tag": "div",
+    "id": "74",
+    "wkradId": "LoginApo.dboRole",
+    "text": "Rolle Rolle auswählenRolle"
+  },
+  {
+    "tag": "input",
+    "id": "I74",
+    "wkradId": "LoginApo.dboRole.Input",
+    "text": ""
+  },
+  {
+    "tag": "button",
+    "id": "B74",
+    "wkradId": "LoginApo.dboRole.button",
+    "text": ""
+  },
+  {
+    "tag": "div",
+    "id": "83",
+    "wkradId": "LoginApo.Div(3)",
+    "text": "Operativer Modus"
+  },
+  {
+    "tag": "div",
+    "id": "76",
+    "wkradId": "LoginApo.OperativerModus",
+    "text": "Operativer Modus"
+  },
+  {
+    "tag": "input",
+    "id": "I76",
+    "wkradId": "LoginApo.OperativerModus.Input",
+    "text": ""
+  },
+  {
+    "tag": "button",
+    "id": "80",
+    "wkradId": "LoginApo.Anmelden",
+    "text": "Anmelden"
+  },
+  {
+    "tag": "div",
+    "id": "82",
+    "wkradId": "LoginApo.Div(4)",
+    "text": "Passwort ändern"
+  },
+  {
+    "tag": "div",
+    "id": "77",
+    "wkradId": "LoginApo.Hyperlinkcontrol",
+    "text": "Passwort ändern"
+  },
+  {
+    "tag": "div",
+    "id": "67",
+    "wkradId": "LoginApo.PanelFooter",
+    "text": ""
+  }
+]

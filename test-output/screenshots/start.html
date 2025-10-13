@@ -1,0 +1,256 @@
+<html><head>
+  <meta name="viewport" content="height=720px, width=1280px, initial-scale=1.0">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="manifest" href="manifest.json" type="application/json">
+
+  <link rel="icon" type="image/png" sizes="16x16" href="./scripts/images/16x16px.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="./scripts/images/32x32px.png">
+  <link rel="icon" type="image/png" sizes="48x48" href="./scripts/images/48x48px.png">
+
+
+  <!--Android Homescreen-->
+  <link rel="shortcut icon" sizes="196x196" href="./scripts/images/196x196px.png">
+
+  <!--IOS-->
+  <link rel="apple-touch-icon" href="./scripts/images/180x180px.png" sizes="180x180">
+
+  <title>Wanko Web</title>
+
+  <style data-fullcalendar=""></style><style>
+    .element {
+      height: env(safe-area-inset-top);
+      width: env(safe-area-inset-left);
+      margin: env(safe-area-inset-right);
+      padding: env(safe-area-inset-bottom, 20px);
+    }
+  </style>
+
+  
+    <link rel="stylesheet" as="style" onload="this.onload=null;this.rel='stylesheet'" type="text/css" href="vendor.bundle.styles.85194d5e12c1b9732d9c.css">
+    
+    <link rel="stylesheet" as="style" onload="this.onload=null;this.rel='stylesheet'" type="text/css" href="main.bundle.styles.374ff4acdaad3bbd6b3b.css">
+    
+<style>
+  body {
+    margin: 0;
+  }
+
+  body * {
+    font-family: 'Roboto', 'Segoe UI', sans-serif;
+  }
+
+  .loading-top {
+    display: flex;
+    height: 60px;
+    justify-content: space-between;
+    background-color: #F4F4F9;
+    padding: 5px;
+    z-index: 1050 !important;
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
+
+  .loading-top .arrow {
+    margin-left: 10px;
+    display: flex;
+    align-items: center;
+  }
+
+  .loading-top .logo-fleetgo {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  .loading-top img {
+    object-fit: fill;
+    margin-right: 10px;
+  }
+
+  .loadingProgress {
+    height: 4px;
+    width: 0;
+    background-color: #E62E25;
+    z-index: 1050;
+    position: absolute;
+    top: 60px;
+
+  }
+
+  body.active-loading {
+    background-color: #FAFAFA;
+  }
+
+  .loadingLogo {
+    height: calc(80% - 64px);
+    width: 100%;
+    position: absolute;
+    top: 84px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1030;
+  }
+
+  .loadingLogo .loadingLogoImgWrapper {
+    width: 15%;
+    position: relative;
+  }
+
+  @media screen and (max-width: 500px) {
+    .loadingLogo .loadingLogoImgWrapper {
+      width: 40%;
+    }
+
+    .loading-top {
+      height: 50px;
+      padding-right: 10px;
+      padding-right: 10px;
+    }
+
+    .loadingProgress {
+      top: 50px;
+    }
+  }
+
+
+
+  @keyframes slidein {
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes slideout {
+    from {
+      opacity: 1;
+    }
+
+    to {
+      opacity: 0;
+    }
+  }
+</style><script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCv_HyBlpLAEEaO99BSylKq1CX9E78khRE&amp;libraries=places"></script></head>
+
+
+
+<body class="active-loading new-theme coop modal-open" lang="de"><div id="3" class="wkObjectFrame scroll-vertical-auto display-None" style="width: 100%; height: 100%; visibility: hidden;" wkrad-id="MainApo"><div class="display-None" wkrad-id="MainApo.ThemesManager"></div><div class="display-None" wkrad-id="MainApo.HelpMode"></div><div id="52" style="display: none; align-items: center;" class="wkDiv top-bar display-None" wkrad-id="MainApo.Div"><nav id="55" class="wkMenu vertical display-None" wkrad-id="MainApo.Menu"><ul id="Menu_55" class="wkMenu-ul vertical"><li title="SideMenu Control" class="wkMenu-li" style="flex: 0 1 3rem;"><a id="D10" title="SideMenu Control" class="wk-sidemenu-toggle"><i class="fa fa-bars"></i></a></li></ul></nav><div id="13" style="" class="wkDiv display-flex display-None" wkrad-id="MainApo.Div(1)"><div id="14" class="wkHyperlink display-None" wkrad-id="MainApo.Hyperlinkcontrol" style="display: block;"><a id="14_link" class="wkHyperlink-link" target="_blank" href="">WKRAD NetHelp</a></div><div id="15" style="" class="wkDiv dbo-mode-container display-None" wkrad-id="MainApo.Div(2)"><label class="wkLabel display-None" id="17" style="display: inline-block;" wkrad-id="MainApo.Label"></label></div><label class="wkLabel display-None" id="1" style="margin-right: 1rem; display: inline-block;" wkrad-id="MainApo.Label(1)"></label></div></div><div id="7" class="wkObjectFrame scroll-vertical-auto display-None" style="width:100%;;height:100%;; display:flex; flex-direction:row; " wkrad-id="MainApo.ObjectFrame"><div class="sidebar wkSideMenuPinned" style="display: flex;"><div class="logo-wrapper"><img src="./scripts/images/logo.svg?1759583084185" class="logo"></div><div class="sidenav-icons"><div class="sidenav-icon"><span class="fa fa-star"></span></div><div class="sidenav-icon active"><span class="fa fa-user"></span></div></div><div><button id="18" class="wkButton btn btn-default icon-button button-state-off display-None" style="margin-right:1em; " data-original-title="" title="" wkrad-id="MainApo.TechnischerName"><span class="buttontext"></span><span class="wkradicon-technical-name-toggle"></span><div class="icon-button-title"></div><span class="notification fa-solid fa-bell" style="display: none;"></span></button><button id="20" class="wkButton btn btn-default icon-button display-None" style="margin-right:1em; " data-original-title="" title="" wkrad-id="MainApo.Hilfe"><span class="buttontext"></span><span class="wkradicon-help-circle"></span><div class="icon-button-title"></div><span class="notification fa-solid fa-bell" style="display: none;"></span></button><button id="22" class="wkButton btn btn-default icon-button display-None" style="margin-right:1em; " data-original-title="" title="" wkrad-id="MainApo.Info"><span class="buttontext"></span><span class="wkradicon-info-circle"></span><div class="icon-button-title"></div><span class="notification fa-solid fa-bell" style="display: none;"></span></button><button id="25" class="wkButton btn btn-default icon-button dropdown-button display-None sign-out-btn" style="margin-right:1em; height:30px; display:flex; align-items:center; flex-direction:row; margin-left:8px; " data-original-title="" title="" wkrad-id="MainApo.Abmelden"><span class="buttontext"></span><span class="wkradicon-logout"></span><div class="icon-button-title"></div><span class="notification fa-solid fa-bell" style="display: none;"></span><span class="fa-solid fa-caret-down dropdown-button-caret"></span></button></div></div><div id="10" style="margin-left: 0px;" class="wkSideMenu pinned display-None" title="SideMenu Control" wkrad-id="MainApo.SideMenu"><div id="SearchWrapper_10" class="search-wrapper"><input class="" type="text" placeholder="name" style="height: 0px; width: 0px; padding: 0px;"><input class="" type="password" placeholder="password" style="height: 0px; width: 0px; padding: 0px;"><input class="search-menu wkEdit-input form-control input-md" id="Search_10" autocomplete="off" type="text" title="" placeholder="Suche" tabindex="" style=""><span class="glyphicon glyphicon-search pull-right icon search" id="Search_Icon_10"></span><span class="glyphicon glyphicon-remove pull-right icon remove" id="Close_Icon_10"></span><span class="glyphicon glyphicon-pushpin pull-right icon pin sideMenu-pin-active" id="Pin_Icon_10"></span></div><div id="SplitterContainer_10" class="splitter-container" style="height: 636px;"><div id="FavoriteWrapper_10" class="favorite-wrapper" style="display: none;"><div class="menu-title">Favoriten</div><div class="favorite-root" title=""><label class="title">Favorite</label><span class="glyphicon glyphicon-menu-left pull-right cursor-pointer collapse-handle"></span><span id="FavoriteWrapper_10_OpenFav" class="glyphicon glyphicon-eye-open cursor-pointer"></span></div><div id="favoriteMenuItems_10" class="menuitems" style="display: none;"></div></div><div id="MenusWrapper_10" class="menu-wrapper display" style="display: none;"><div class="menu-title">Navigation</div><div class="menu-root" title=""><label class="title"></label><span class="glyphicon glyphicon-menu-left glyphicon-menu-down pull-right cursor-pointer collapse-handle"></span></div><div id="menuItems_10" class="menuitems"></div></div></div><div id="Search_Result_container_10" class="search-result-container"></div><div class="logo-container"><img src="./scripts/images/Programm_Favicon.svg"></div></div><div class="wkTabPanel display-None root-tabpanel" id="33" style="" wkrad-id="MainApo.TabPanel"><div id="33_TabPanel_1" class="tabpanel-wrapper ui-droppable"><div class="tabs-section-mobile"><div class="tabs-section-logo"></div><div class="left-section"><span class="icon"><i class="fa fa-bars"></i></span></div><div class="center-section hidden"><div class="left-arrow fa fa-caret-left"></div><div class="title">TabItem</div><div class="right-arrow fa fa-caret-right"></div></div><div class="right-section hidden"><span class="icon"><i class="fa fa-times fa-fw"></i></span></div></div><div class="tabs-section"><div class="tabs-wrapper"><div class="drag-container"></div></div><div class="tabs-nav"><i class="fa fa-caret-left"></i><i class="fa fa-list"></i><i class="fa fa-caret-right"></i></div><div class="tabs-right-section"><div id="33_divDboModeContainer" class="wkDiv dbo-mode-container"><div class="logo-cover" style="background: url(&quot;./scripts/images/Wanko_Logo_Informationslogistik.svg&quot;) center center / 90px no-repeat;"></div><label id="33_lblDboModeContainer" class="wkLabel"></label></div></div></div><div class="content-wrapper"><div class="content-wrapper-cover"></div><div class="content-wrapper-cover-overlap"></div></div><div class="tabpanel-dock-btn"><div class="dock-btn-top fa fa-caret-up"></div><div class="dock-btn-center-container"><div class="dock-btn-left fa fa-caret-left"></div><div class="dock-btn-center fa fa-circle"></div><div class="dock-btn-right fa fa-caret-right"></div></div><div class="dock-btn-bottom fa fa-caret-down"></div></div></div><div class="tabpanel-drag-cover"><div class="cover-tab"></div><div class="cover-content"></div></div><div dir="ltr" class="resize-sensor" style="pointer-events: none; position: absolute; inset: 0px; overflow: hidden; z-index: -1; visibility: hidden; max-width: 100%;"><div class="resize-sensor-expand" style="pointer-events: none; position: absolute; inset: 0px; overflow: hidden; z-index: -1; visibility: hidden; max-width: 100%;"><div style="position: absolute; left: 0px; top: 0px; transition: all; width: 1047px; height: 730px;"></div></div><div class="resize-sensor-shrink" style="pointer-events: none; position: absolute; inset: 0px; overflow: hidden; z-index: -1; visibility: hidden; max-width: 100%;"><div style="position: absolute; left: 0px; top: 0px; transition: all; width: 200%; height: 200%;"></div></div></div></div></div></div>
+  <div></div>
+  <div class="loading-top">
+    <div class="arrow"><img height="60%" src="/scripts/images/logo.png"></div>
+    <div class="logo-fleetgo"><img height="40%" src="/scripts/images/Wanko_FleetGO.svg"></div>
+  </div>
+  <div class="loadingProgress" style="width: 100%;"></div>
+  <div class="loadingLogo">
+    <div class="loadingLogoImgWrapper">
+      <img width="100%" src="/scripts/images/Programm_Favicon_label.svg">
+    </div>
+
+  </div>
+
+  <script defer="" src="env.js"></script>
+  <script defer="" src="ace-builds/ace.js"></script>
+  <script defer="" src="ace-builds/ext-language_tools.js"></script>
+
+
+
+
+  
+    <script defer="" src="vendor.bundle.1823af1a9429c4fcf4e3.js"></script>
+    
+    <script defer="" src="main.bundle.f6ae2ef231664295564d.js"></script>
+    
+
+      <script>
+        if ("serviceWorker" in navigator)
+        {
+          window.addEventListener('load', function ()
+          {
+            navigator.serviceWorker.register("sw.js").then(
+              function (erfolg)
+              {
+                console.log("ServiceWorker wurde registriert.", erfolg);
+              }
+            ).catch(
+              function (fehler)
+              {
+                console.log("ServiceWorker wurde leider nicht registriert.", fehler);
+              }
+            );
+          });
+
+        }
+        const cssFiles = document.querySelectorAll('link[rel="preload"]');
+        const scripts = document.querySelectorAll('script');
+
+        const loadedFiles = []
+
+
+
+        let trackLoading = cssFiles.length + scripts.length - 1;
+
+
+
+        scripts.forEach(script =>
+        {
+          script.addEventListener("load", () =>
+          {
+            if (!loadedFiles.includes(script))
+            {
+              trackLoading -= 1;
+              loadedFiles.push(script)
+            }
+
+          })
+        })
+
+
+        cssFiles.forEach(cssFile =>
+        {
+          cssFile.addEventListener("load", () =>
+          {
+            if (!loadedFiles.includes(cssFile))
+            {
+              trackLoading -= 1;
+              loadedFiles.push(cssFile)
+            }
+          })
+        })
+
+        const progressBar = document.querySelector(".loadingProgress")
+        const stepsize = 100 / trackLoading;
+        const progressBarTimer = setInterval(() =>
+        {
+          progressBar.style.width = `${stepsize * loadedFiles.length}%`
+          if (trackLoading === 0) clearInterval(progressBarTimer)
+
+        }, 200)
+      </script>
+
+      <script>
+        window.addEventListener('load', function ()
+        {
+          window.history.pushState({ noBackExitsApp: true }, '')
+        })
+
+        window.addEventListener('popstate', function (event)
+        {
+          if (event.state && event.state.noBackExitsApp)
+          {
+            window.history.pushState({ noBackExitsApp: true }, '')
+          }
+        })
+      </script>
+
+
+
+
+  <div class="wkButtonDropdownList dropdown-content" style="display: none;"></div><div class="modal login display-None login-fade in" tabindex="" id="modal_1759583084312" wkmodal-id="56" wkrad-id="LoginApo" style="position: absolute; display: flex; align-items: center; justify-content: center;"><div class="modal-dialog ui-draggable" style="margin: 0px; position: fixed; min-width: 300px; min-height: 300px; max-height: 720px; max-width: 1280px; overflow: visible; height: 619px; width: 512px; inset: 50.5px auto auto 384px;"><div class="modal-content ui-resizable" style="height: 619px; width: 512px;"><div class="modal-header ui-draggable-handle"><div class="icon-container"><i class="fa fa-window-maximize max active"></i><i class="fa fa-window-restore restore"></i><i class="fa fa-times m-close active"></i></div><h3 class="modal-header-caption"></h3><div id="60" class="wkImage display-None" wkrad-id="LoginApo.Image"><img id="Image_60" class="image" src="./scripts/images/Wanko_Logo_Informationslogistik.svg"></div></div><div class="modal-body" style="visibility: visible; width: 100%; height: calc(100% - 132px);"><div id="61" style="" class="wkDiv topbar display-None" wkrad-id="LoginApo.Div"></div><div id="62" style="" class="wkDiv topbarRedbar display-None" wkrad-id="LoginApo.Div(1)"></div><div id="63" style="" class="wkDiv register display-None" wkrad-id="LoginApo.Div(2)"></div><div id="64" class="wkHBFPanel wkPanel panel panel-default display-None" style="" wkrad-id="LoginApo.HBFPanel"><div id="65" class="wkPanelHeader panel-heading header-Empty display-None" style="" wkrad-id="LoginApo.PanelHeader(1)"><h4 class="panel- pull-left" style=""></h4></div><div id="66" class="wkPanelBody panel-body scroll-vertical-auto display-None wkrad-p-5x modal-login" style="padding:5px; " wkrad-id="LoginApo.PanelBody(1)"><form><div id="68" class="wkEdit edit-md display-None login-username focus" style="" wkrad-id="LoginApo.Benutzername"><label id="L68" for="I68" class="wkEdit-label control-label label-md floating" title="Benutzername">Benutzername</label><div id="FloatingModeWrapperIcon68" class="floating-mode-filter-active" style="display: none;"><i class="wkradicon-search"></i><span class="search-notification"><i class="wkradicon-filter-filled"></i></span></div><div id="I_Container68" class="wkEdit-input-container"><i id="BC_68" class="wkEdit-barcode fa fa-barcode" style="display: none;"></i><input id="I68" class="wkEdit-input form-control input-md ui-droppable" type="text" title="" data-parsley-trigger="focusout keyup" data-parsley-maxlength="255" maxlength="255" wkrad-id="LoginApo.Benutzername.Input" placeholder="Benutzername" data-original-title="Benutzername" tabindex="0" autocomplete="username" style=""></div><label id="LR68" class="wkEdit-label-readonly" style="display: none;"><span id="LRS68" class="wkEdit-label-readonly-span dark"></span></label></div><div id="70" class="wkEdit edit-md display-None login-password" style="" wkrad-id="LoginApo.Passwort"><label id="L70" for="I70" class="wkEdit-label control-label label-md floating" title="Passwort">Passwort</label><div id="FloatingModeWrapperIcon70" class="floating-mode-filter-active" style="display: none;"><i class="wkradicon-search"></i><span class="search-notification"><i class="wkradicon-filter-filled"></i></span></div><div id="I_Container70" class="wkEdit-input-container"><i id="BC_70" class="wkEdit-barcode fa fa-barcode" style="display: none;"></i><input id="I70" class="wkEdit-input form-control input-md ui-droppable" type="password" title="" data-parsley-trigger="focusout keyup" data-parsley-maxlength="255" maxlength="255" wkrad-id="LoginApo.Passwort.Input" placeholder="Passwort" data-original-title="Passwort" tabindex="0" autocomplete="on" style=""></div><label id="LR70" class="wkEdit-label-readonly" style="display: none;"><span id="LRS70" class="wkEdit-label-readonly-span dark"></span></label></div></form><div id="72" class="wkShortParent shortparent-md display-None" style="" wkrad-id="LoginApo.dboLanguageCode"><div id="H72" type="text" class="wkShortParent-html-layout" style="display: none;"><div class="html-caption wkLabel" style="display: none;">Sprache</div><div class="default-html"> <div class="icon wkradicon-plus"></div><div><span class="default-html-caption">Sprache</span> auswählen</div></div><div class="html-selected-wrapper"></div></div><span id="L72" for="I72" class="InputAddOn-label label-md" style="" title="Sprache">Sprache</span><div class="InputAddOn"><input id="I72" type="text" class="wkShortParent-input form-control InputAddOn-field input-md" style="" value="German " title="Sprache wählen" wkrad-id="LoginApo.dboLanguageCode.Input"><button id="B72" class="wkShortParent-button InputAddOn-item InputAddOn-item-md" title="Sprache" data-container="body" data-toggle="popover" data-placement="auto bottom" tabindex="-1" style="" wkrad-id="LoginApo.dboLanguageCode.button"><span class="caret"></span></button></div></div><div id="74" class="wkShortParent shortparent-md display-None gui-disabled-readonly" style="" wkrad-id="LoginApo.dboRole"><div id="H74" type="text" class="wkShortParent-html-layout" style="display: none;"><div class="html-caption wkLabel" style="display: none;">Rolle</div><div class="default-html"> <div class="icon wkradicon-plus"></div><div><span class="default-html-caption">Rolle</span> auswählen</div></div><div class="html-selected-wrapper"></div></div><span id="L74" for="I74" class="InputAddOn-label label-md" style="" title="Rolle">Rolle</span><div class="InputAddOn"><input id="I74" type="text" class="wkShortParent-input form-control InputAddOn-field input-md" style="" value="" title="Rolle" readonly="" tabindex="-999" wkrad-id="LoginApo.dboRole.Input"><button id="B74" class="wkShortParent-button InputAddOn-item InputAddOn-item-md" title="Rolle" data-container="body" data-toggle="popover" data-placement="auto bottom" tabindex="-1" style="" disabled="" wkrad-id="LoginApo.dboRole.button"><span class="caret"></span></button></div></div><div id="83" style="" class="wkDiv wkrad-pt-40x display-None" wkrad-id="LoginApo.Div(3)"><div class="wkCheckBox switch checkbox-md display-None" id="76" style="" wkrad-id="LoginApo.OperativerModus"><input class="wkCheckBox-input" type="checkbox" id="I76" name="I76" style="" wkrad-id="LoginApo.OperativerModus.Input"><div class="wkCheckBox-icon-box slider round" data-original-title="" title=""><div class="wkCheckBox-icon-check"></div></div><label class="wkCheckBox-label" id="L76" for="I76" style="" title="" data-original-title="Operativer Modus">Operativer Modus</label></div></div><button id="80" class="wkButton btn btn-default wkDefaultButton display-None btn-light login-ok" style="margin-top:25px; " data-original-title="" title="" wkrad-id="LoginApo.Anmelden"><span class="buttontext">Anmelden</span><span class=""></span><div class="icon-button-title"></div><span class="notification fa-solid fa-bell" style="display: none;"></span></button><div id="82" style="" class="wkDiv wkrad-flex wkrad-flex-direction-column wkrad-flex-align-items-center wkrad-flex-justify-content-center display-None" wkrad-id="LoginApo.Div(4)"><div id="77" class="wkHyperlink display-None" wkrad-id="LoginApo.Hyperlinkcontrol"><a id="77_link" class="wkHyperlink-link" target="_blank">Passwort ändern</a></div></div></div><div id="67" class="wkPanelFooter panel-footer wkPanelFooterEmpty display-None" style="" wkrad-id="LoginApo.PanelFooter"></div></div></div><div class="modal-footer"></div><div class="ui-resizable-handle ui-resizable-e" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-s" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-se ui-icon ui-icon-gripsmall-diagonal-se" style="z-index: 90;"></div></div></div></div><div class="modal-backdrop fade in wkinvert-backdrop" style="position: absolute;"></div></body></html>

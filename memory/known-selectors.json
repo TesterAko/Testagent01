@@ -1,0 +1,9 @@
+{
+  "login": {
+    "container": "LoginApo",
+    "username": "LoginApo.Benutzername.Input",
+    "password": "LoginApo.Passwort.Input",
+    "language": "LoginApo.dboLanguageCode",
+    "submit": "LoginApo.Anmelden"
+  }
+}

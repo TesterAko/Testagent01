@@ -1,0 +1,3 @@
+# Recording: Nach dem Login die Tourenplanung �ffnen
+Datum: 2025-10-02T13:26:52.339Z
+Output-Datei: memory\recordings\nach_dem_login_die_tourenplanung_�ffnen.spec.ts
