@@ -5,7 +5,7 @@
 //   - hasSeenDOM(html)
 //   - rememberPage(html, gptSuggestions)
 //
-// Neues API (für Explorer/Auth/Reporter):
+// Neues API (für Explorer/Auth/Reporter/Planner):
 //   - rememberSelector(context, role, wkradId)
 //   - getSelectors(context)
 //   - mergeSelectors(context, entries)
@@ -18,6 +18,7 @@
 //   - recordError({ type, message, stack, screenshotPath, pageUrl, context })
 //   - rememberRoute(label, url)
 //   - listRoutes()
+//   - recordOutcome({ fromKey, toKey, action, outcome })
 
 import fs from 'fs-extra';
 import path from 'path';
@@ -30,10 +31,17 @@ const __dirname = path.dirname(__filename);
 // Alles in EINER Datei im gleichen Ordner persistieren
 const memoryFilePath = path.join(__dirname, 'memory.json');
 
+// weiche Limits, per ENV überschreibbar
+const MAX_PAGES = Number(process.env.MEM_MAX_PAGES || 1000);
+const MAX_VISIBLE_IDS = Number(process.env.MEM_MAX_VISIBLE_IDS || 120);
+
 const DEFAULT_STATE = {
-    pages: [],                               // [{ domHash, timestamp, gptSuggestions, meta? }]
+    // pages-Elemente können „alt“ (nur domHash/timestamp) oder „neu“ sein:
+    // alt: { domHash, timestamp, gptSuggestions }
+    // neu: { domHash, firstSeen, lastSeen, hits, gptSuggestions, meta:{ url,title,visibleIds,... } }
+    pages: [],
     selectors: {},                           // { contextKey: { role: wkradId } }
-    navGraph: { nodes: {}, edges: [] },      // nodes: {key:{label,firstSeen,lastSeen,stats}}, edges: [{id,from,to,action,weight,firstSeen,lastSeen}]
+    navGraph: { nodes: {}, edges: [] },      // nodes: {key:{label,firstSeen,lastSeen,stats}}, edges: [{id,from,to,action,weight,firstSeen,lastSeen,outcomeStats?}]
     routes: { stable: [] },                  // [{ label, url, hash, firstSeen, lastSeen, hits }]
     errors: []                               // [{ t,type,message,stack,screenshotPath,url,context }]
 };
@@ -75,16 +83,28 @@ export async function rememberPage(html, gptSuggestions = []) {
     const memory = await loadMemory();
     const hashVal = hash(html, 'sha256', 64);
 
-    if (!memory.pages.some(p => p.domHash === hashVal)) {
+    // alt: vorhandenen Eintrag suchen
+    const existing = memory.pages.find(p => p.domHash === hashVal);
+    if (!existing) {
         memory.pages.push({
             domHash: hashVal,
-            timestamp: nowIso(),
-            gptSuggestions,
+            firstSeen: nowIso(),
+            lastSeen: nowIso(),
+            hits: 1,
+            gptSuggestions
         });
-        await saveMemory(memory);
-        return true;
+    } else {
+        existing.lastSeen = nowIso();
+        existing.hits = (existing.hits ?? 0) + 1;
+        // gptSuggestions optional zusammenführen (einfach anhängen, hart begrenzen)
+        const prev = Array.isArray(existing.gptSuggestions) ? existing.gptSuggestions : [];
+        existing.gptSuggestions = [...prev, ...gptSuggestions].slice(-50);
     }
-    return false;
+
+    // prunen, falls zu groß
+    prunePages(memory);
+    await saveMemory(memory);
+    return !existing;
 }
 
 // ------------------------- Selektor-Gedächtnis -------------------------------
@@ -129,40 +149,149 @@ export async function upsertNode(nodeKey, label) {
     await saveMemory(memory);
 }
 
+function edgeId(fromKey, toKey, action) {
+    return `${fromKey}::${action?.id || action?.selector || action?.desc || 'act'}::${toKey}`;
+}
+
+function ensureOutcomeStats(edge) {
+    edge.outcomeStats = edge.outcomeStats || { progress: 0, nostate: 0, error: 0 };
+    return edge.outcomeStats;
+}
+
 export async function addEdge(fromKey, toKey, action) {
     if (!fromKey || !toKey) return;
     const memory = await loadMemory();
-    const id = `${fromKey}::${action?.id || action?.selector || action?.desc || 'act'}::${toKey}`;
+    const id = edgeId(fromKey, toKey, action);
     let edge = memory.navGraph.edges.find(e => e.id === id);
     if (!edge) {
-        edge = { id, from: fromKey, to: toKey, action: action || null, weight: 0, firstSeen: nowIso(), lastSeen: nowIso() };
+        edge = {
+            id, from: fromKey, to: toKey,
+            action: action || null,
+            weight: 0,
+            firstSeen: nowIso(),
+            lastSeen: nowIso(),
+            outcomeStats: { progress: 0, nostate: 0, error: 0 }
+        };
         memory.navGraph.edges.push(edge);
     }
     edge.weight += 1;
     edge.lastSeen = nowIso();
+    ensureOutcomeStats(edge); // falls aus Altbestand ohne outcomeStats
     await saveMemory(memory);
 }
 
 export async function nextTargets(nodeKey, limit = 6) {
     const memory = await loadMemory();
-    const out = memory.navGraph.edges.filter(e => e.from === nodeKey);
-    const sorted = out.sort((a, b) => (a.weight - b.weight)); // wenig besuchte zuerst
+    // Self-Loops vermeiden: echte Navigation bevorzugen
+    const out = memory.navGraph.edges
+        .filter(e => e.from === nodeKey && e.from !== e.to);
+
+    // Priorisierung: wenig besucht + gute Outcome-Quote
+    const score = (e) => {
+        const os = e.outcomeStats || { progress: 0, nostate: 0, error: 0 };
+        const tries = (os.progress || 0) + (os.nostate || 0) + (os.error || 0);
+        const progR = tries > 0 ? (os.progress / tries) : 0;
+        // „untererforscht“ bevorzugen (kleines weight), aber Fortschritt belohnen
+        return (1 / Math.max(1, e.weight)) + (progR * 1.5);
+    };
+
+    const sorted = out.sort((a, b) => score(b) - score(a));
     return sorted.slice(0, limit).map(e => e.action);
+}
+
+/**
+ * Outcome an Kante persistieren.
+ * outcome: 'progress' | 'nostate' | 'error'
+ */
+export async function recordOutcome({ fromKey, toKey, action, outcome }) {
+    if (!fromKey || !toKey || !action || !outcome) return;
+    const memory = await loadMemory();
+    const id = edgeId(fromKey, toKey, action);
+    let edge = memory.navGraph.edges.find(e => e.id === id);
+    if (!edge) {
+        // Falls addEdge nicht vorher aufgerufen wurde, legen wir die Kante an.
+        edge = {
+            id, from: fromKey, to: toKey,
+            action: action || null,
+            weight: 0,
+            firstSeen: nowIso(),
+            lastSeen: nowIso(),
+            outcomeStats: { progress: 0, nostate: 0, error: 0 }
+        };
+        memory.navGraph.edges.push(edge);
+    }
+    const os = ensureOutcomeStats(edge);
+    if (outcome === 'progress') os.progress += 1;
+    else if (outcome === 'nostate') os.nostate += 1;
+    else if (outcome === 'error') os.error += 1;
+
+    edge.lastSeen = nowIso();
+    await saveMemory(memory);
+    return edge;
 }
 
 // ------------------------- Page-State / Fingerprint --------------------------
 
+/**
+ * Dedupliziert Page-States:
+ * - Signatur = sha1(url|title|visibleIds[...])
+ * - existiert bereits: hits++, lastSeen aktualisieren, visibleIds mergen (Set, Limit)
+ * - neu: Eintrag anlegen (firstSeen/lastSeen/hits=1)
+ * - optional: FIFO-Pruning, wenn MAX_PAGES überschritten
+ */
 export async function recordPageState({ url, title, visibleIds, extra = {} }) {
     const memory = await loadMemory();
     const signature = hash([url, title, ...(visibleIds || [])].join('|'), 'sha1', 12);
-    memory.pages.push({
-        domHash: signature, // kompatibel zur alten Struktur, hier als kompakter Sig
-        timestamp: nowIso(),
-        gptSuggestions: [],
-        meta: { url, title, visibleIds, ...extra }
-    });
+
+    let entry = memory.pages.find(p => p.domHash === signature);
+
+    if (!entry) {
+        entry = {
+            domHash: signature,
+            firstSeen: nowIso(),
+            lastSeen: nowIso(),
+            hits: 1,
+            gptSuggestions: [],
+            meta: {
+                url,
+                title,
+                visibleIds: Array.from(new Set(visibleIds || [])).slice(0, MAX_VISIBLE_IDS),
+                ...extra
+            }
+        };
+        memory.pages.push(entry);
+    } else {
+        // vorhandenen Eintrag aktualisieren
+        entry.lastSeen = nowIso();
+        entry.hits = (entry.hits ?? 0) + 1;
+
+        // URL/Titel aktualisieren (falls geändert)
+        entry.meta = entry.meta || {};
+        entry.meta.url = url;
+        entry.meta.title = title;
+
+        // visibleIds mergen (ohne Duplikate, Limit)
+        const prevIds = Array.isArray(entry.meta.visibleIds) ? entry.meta.visibleIds : [];
+        const merged = Array.from(new Set([...(prevIds || []), ...(visibleIds || [])]));
+        entry.meta.visibleIds = merged.slice(0, MAX_VISIBLE_IDS);
+
+        // extra-Felder behutsam mergen (neue Keys überschreiben ggf.)
+        entry.meta = { ...entry.meta, ...extra };
+    }
+
+    prunePages(memory);
     await saveMemory(memory);
     return signature;
+}
+
+function prunePages(memory) {
+    if (!Array.isArray(memory.pages)) memory.pages = [];
+    if (memory.pages.length <= MAX_PAGES) return;
+
+    // nach lastSeen aufsteigend sortieren und den Überschuss entfernen
+    memory.pages.sort((a, b) => String(a.lastSeen || a.timestamp || '') < String(b.lastSeen || b.timestamp || '') ? -1 : 1);
+    const toDrop = memory.pages.length - MAX_PAGES;
+    if (toDrop > 0) memory.pages.splice(0, toDrop);
 }
 
 // Stabiler Node-Key direkt aus Playwright-Page

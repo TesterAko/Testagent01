@@ -1,0 +1,126 @@
+{
+  "title": "Ausführungsfehler",
+  "createdAt": "2025-10-15T13:28:31.258Z",
+  "url": "http://localhost:3004/#lang=de",
+  "expected": "Aktion \"Navigation ausführen\" sollte ohne Fehler durchlaufen.",
+  "actual": "Exception: locator.click: Target page, context or browser has been closed\nCall log:\n\u001b[2m  - waiting for locator('[wkrad-id=\"AppInfoApo(10).AppSettings...\"], [data-wkrad-id=\"AppInfoApo(10).AppSettings...\"]').first()\u001b[22m\n\u001b[2m    - locator resolved to <button id=\"781\" title=\"\" data-original-title=\"AppSettings...\" wkrad-id=\"AppInfoApo(10).AppSettings...\" class=\"wkButton btn btn-default display-None\">…</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <div class=\"modal-footer\">…</div> from <div tabindex=\"-1\" wkmodal-id=\"1449\" id=\"modal_1760534889155\" wkrad-id=\"AppSettingsApo(6)\" class=\"modal fade display-None in\">…</div> subtree intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <div class=\"modal-footer\">…</div> from <div tabindex=\"-1\" wkmodal-id=\"1449\" id=\"modal_1760534889155\" wkrad-id=\"AppSettingsApo(6)\" class=\"modal fade display-None in\">…</div> subtree intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    27 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m       - element is visible, enabled and stable\u001b[22m\n\u001b[2m       - scrolling into view if needed\u001b[22m\n\u001b[2m       - done scrolling\u001b[22m\n\u001b[2m       - <div class=\"modal-footer\">…</div> from <div tabindex=\"-1\" wkmodal-id=\"1449\" id=\"modal_1760534889155\" wkrad-id=\"AppSettingsApo(6)\" class=\"modal fade display-None in\">…</div> subtree intercepts pointer events\u001b[22m\n\u001b[2m     - retrying click action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n",
+  "error": {
+    "message": "locator.click: Target page, context or browser has been closed\nCall log:\n\u001b[2m  - waiting for locator('[wkrad-id=\"AppInfoApo(10).AppSettings...\"], [data-wkrad-id=\"AppInfoApo(10).AppSettings...\"]').first()\u001b[22m\n\u001b[2m    - locator resolved to <button id=\"781\" title=\"\" data-original-title=\"AppSettings...\" wkrad-id=\"AppInfoApo(10).AppSettings...\" class=\"wkButton btn btn-default display-None\">…</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <div class=\"modal-footer\">…</div> from <div tabindex=\"-1\" wkmodal-id=\"1449\" id=\"modal_1760534889155\" wkrad-id=\"AppSettingsApo(6)\" class=\"modal fade display-None in\">…</div> subtree intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <div class=\"modal-footer\">…</div> from <div tabindex=\"-1\" wkmodal-id=\"1449\" id=\"modal_1760534889155\" wkrad-id=\"AppSettingsApo(6)\" class=\"modal fade display-None in\">…</div> subtree intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    27 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m       - element is visible, enabled and stable\u001b[22m\n\u001b[2m       - scrolling into view if needed\u001b[22m\n\u001b[2m       - done scrolling\u001b[22m\n\u001b[2m       - <div class=\"modal-footer\">…</div> from <div tabindex=\"-1\" wkmodal-id=\"1449\" id=\"modal_1760534889155\" wkrad-id=\"AppSettingsApo(6)\" class=\"modal fade display-None in\">…</div> subtree intercepts pointer events\u001b[22m\n\u001b[2m     - retrying click action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n",
+    "stack": "locator.click: Target page, context or browser has been closed\nCall log:\n\u001b[2m  - waiting for locator('[wkrad-id=\"AppInfoApo(10).AppSettings...\"], [data-wkrad-id=\"AppInfoApo(10).AppSettings...\"]').first()\u001b[22m\n\u001b[2m    - locator resolved to <button id=\"781\" title=\"\" data-original-title=\"AppSettings...\" wkrad-id=\"AppInfoApo(10).AppSettings...\" class=\"wkButton btn btn-default display-None\">…</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <div class=\"modal-footer\">…</div> from <div tabindex=\"-1\" wkmodal-id=\"1449\" id=\"modal_1760534889155\" wkrad-id=\"AppSettingsApo(6)\" class=\"modal fade display-None in\">…</div> subtree intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <div class=\"modal-footer\">…</div> from <div tabindex=\"-1\" wkmodal-id=\"1449\" id=\"modal_1760534889155\" wkrad-id=\"AppSettingsApo(6)\" class=\"modal fade display-None in\">…</div> subtree intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    27 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m       - element is visible, enabled and stable\u001b[22m\n\u001b[2m       - scrolling into view if needed\u001b[22m\n\u001b[2m       - done scrolling\u001b[22m\n\u001b[2m       - <div class=\"modal-footer\">…</div> from <div tabindex=\"-1\" wkmodal-id=\"1449\" id=\"modal_1760534889155\" wkrad-id=\"AppSettingsApo(6)\" class=\"modal fade display-None in\">…</div> subtree intercepts pointer events\u001b[22m\n\u001b[2m     - retrying click action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n\n    at clickSafe (Q:\\gedike\\Testagent\\browser\\action-executor.js:33:15)\n    at async executeActions (Q:\\gedike\\Testagent\\browser\\action-executor.js:118:17)\n    at async Explorer.run (Q:\\gedike\\Testagent\\agent\\explorer.js:124:21)\n    at async runExploration (Q:\\gedike\\Testagent\\agent\\explorer.js:231:5)\n    at async main (Q:\\gedike\\Testagent\\index.js:94:13)"
+  },
+  "lastSteps": [
+    {
+      "intent": "Navigation ausführen",
+      "action": {
+        "type": "click",
+        "id": "AppInfoApo(10).AppSettings...",
+        "selector": "[wkrad-id=\"AppInfoApo(10).AppSettings...\"], [data-wkrad-id=\"AppInfoApo(10).AppSettings...\"]",
+        "source": "discover"
+      },
+      "outcome": "progress",
+      "before": {
+        "url": "http://localhost:3004/#lang=de",
+        "title": "Wanko Web",
+        "sig": "902bc521db7e"
+      },
+      "after": {
+        "url": "http://localhost:3004/#lang=de",
+        "title": "Wanko Web",
+        "sig": "79e933117b06"
+      }
+    },
+    {
+      "intent": "Navigation ausführen",
+      "action": {
+        "type": "click",
+        "id": "AppInfoApo(10).AppSettings...",
+        "selector": "[wkrad-id=\"AppInfoApo(10).AppSettings...\"], [data-wkrad-id=\"AppInfoApo(10).AppSettings...\"]",
+        "source": "discover"
+      },
+      "outcome": "progress",
+      "before": {
+        "url": "http://localhost:3004/#lang=de",
+        "title": "Wanko Web",
+        "sig": "79e933117b06"
+      },
+      "after": {
+        "url": "http://localhost:3004/#lang=de",
+        "title": "Wanko Web",
+        "sig": "9b7e45d07f0c"
+      }
+    },
+    {
+      "intent": "Navigation ausführen",
+      "action": {
+        "type": "click",
+        "id": "AppInfoApo(10).AppSettings...",
+        "selector": "[wkrad-id=\"AppInfoApo(10).AppSettings...\"], [data-wkrad-id=\"AppInfoApo(10).AppSettings...\"]",
+        "source": "discover"
+      },
+      "outcome": "progress",
+      "before": {
+        "url": "http://localhost:3004/#lang=de",
+        "title": "Wanko Web",
+        "sig": "9b7e45d07f0c"
+      },
+      "after": {
+        "url": "http://localhost:3004/#lang=de",
+        "title": "Wanko Web",
+        "sig": "51dad1d29af7"
+      }
+    },
+    {
+      "intent": "Navigation ausführen",
+      "action": {
+        "type": "click",
+        "id": "MainApo.Info",
+        "selector": "[wkrad-id=\"MainApo.Info\"], [data-wkrad-id=\"MainApo.Info\"]",
+        "source": "discover"
+      },
+      "outcome": "nostate",
+      "before": {
+        "url": "http://localhost:3004/#lang=de",
+        "title": "Wanko Web",
+        "sig": "51dad1d29af7"
+      },
+      "after": {
+        "url": "http://localhost:3004/#lang=de",
+        "title": "Wanko Web",
+        "sig": "51dad1d29af7"
+      }
+    },
+    {
+      "intent": "Navigation ausführen",
+      "action": {
+        "type": "click",
+        "id": "AppInfoApo(10).AppSettings...",
+        "selector": "[wkrad-id=\"AppInfoApo(10).AppSettings...\"], [data-wkrad-id=\"AppInfoApo(10).AppSettings...\"]",
+        "source": "discover"
+      },
+      "outcome": "progress",
+      "before": {
+        "url": "http://localhost:3004/#lang=de",
+        "title": "Wanko Web",
+        "sig": "51dad1d29af7"
+      },
+      "after": {
+        "url": "http://localhost:3004/#lang=de",
+        "title": "Wanko Web",
+        "sig": "35f104aac5b5"
+      }
+    }
+  ],
+  "screenshot": "reports/1760534911250_exec_error.png",
+  "context": {
+    "step": 22,
+    "action": {
+      "type": "click",
+      "id": "AppInfoApo(10).AppSettings...",
+      "selector": "[wkrad-id=\"AppInfoApo(10).AppSettings...\"], [data-wkrad-id=\"AppInfoApo(10).AppSettings...\"]",
+      "source": "discover",
+      "score": 2
+    },
+    "nodeA": "5ebd17486411",
+    "nodeB": "5ebd17486411"
+  }
+}

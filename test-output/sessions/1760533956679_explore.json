@@ -1,0 +1,284 @@
+{
+  "startedAt": "2025-10-15T13:12:36.679Z",
+  "label": "explore",
+  "steps": [
+    {
+      "t": "2025-10-15T13:12:55.067Z",
+      "phase": "try",
+      "step": 1,
+      "intent": "Navigation ausführen",
+      "action": {
+        "type": "click",
+        "id": "MainApo",
+        "selector": "[wkrad-id=\"MainApo\"], [data-wkrad-id=\"MainApo\"]",
+        "source": "learn:element",
+        "_freq": 28,
+        "nodeKey": "5ebd17486411"
+      }
+    },
+    {
+      "t": "2025-10-15T13:13:03.363Z",
+      "phase": "try",
+      "step": 2,
+      "intent": "Navigation ausführen",
+      "action": {
+        "type": "click",
+        "id": "MainApo.ObjectFrame",
+        "selector": "[wkrad-id=\"MainApo.ObjectFrame\"], [data-wkrad-id=\"MainApo.ObjectFrame\"]",
+        "source": "learn:element",
+        "_freq": 28,
+        "nodeKey": "5ebd17486411"
+      }
+    },
+    {
+      "t": "2025-10-15T13:13:11.660Z",
+      "phase": "try",
+      "step": 3,
+      "intent": "Navigation ausführen",
+      "action": {
+        "type": "click",
+        "id": "MainApo.TechnischerName",
+        "selector": "[wkrad-id=\"MainApo.TechnischerName\"], [data-wkrad-id=\"MainApo.TechnischerName\"]",
+        "source": "learn:element",
+        "_freq": 28,
+        "nodeKey": "5ebd17486411"
+      }
+    },
+    {
+      "t": "2025-10-15T13:13:19.960Z",
+      "phase": "try",
+      "step": 4,
+      "intent": "Navigation ausführen",
+      "action": {
+        "type": "click",
+        "id": "MainApo.Hilfe",
+        "selector": "[wkrad-id=\"MainApo.Hilfe\"], [data-wkrad-id=\"MainApo.Hilfe\"]",
+        "source": "learn:element",
+        "_freq": 28,
+        "nodeKey": "5ebd17486411"
+      }
+    },
+    {
+      "t": "2025-10-15T13:13:28.246Z",
+      "phase": "try",
+      "step": 5,
+      "intent": "Navigation ausführen",
+      "action": {
+        "type": "click",
+        "id": "MainApo.Info",
+        "selector": "[wkrad-id=\"MainApo.Info\"], [data-wkrad-id=\"MainApo.Info\"]",
+        "source": "learn:element",
+        "_freq": 28,
+        "nodeKey": "5ebd17486411"
+      }
+    },
+    {
+      "t": "2025-10-15T13:13:36.540Z",
+      "phase": "try",
+      "step": 6,
+      "intent": "Navigation/Tab wechseln",
+      "action": {
+        "type": "click",
+        "id": "MainApo.SideMenu",
+        "selector": "[wkrad-id=\"MainApo.SideMenu\"], [data-wkrad-id=\"MainApo.SideMenu\"]",
+        "source": "learn:element",
+        "_freq": 28,
+        "nodeKey": "5ebd17486411"
+      }
+    },
+    {
+      "t": "2025-10-15T13:13:46.146Z",
+      "phase": "try",
+      "step": 7,
+      "intent": "Navigation/Tab wechseln",
+      "action": {
+        "type": "click",
+        "id": "Sidemenu.SysAdmin",
+        "selector": "[wkrad-id=\"Sidemenu.SysAdmin\"], [data-wkrad-id=\"Sidemenu.SysAdmin\"]",
+        "source": "learn:element",
+        "_freq": 28,
+        "nodeKey": "5ebd17486411"
+      }
+    },
+    {
+      "t": "2025-10-15T13:13:54.454Z",
+      "phase": "try",
+      "step": 8,
+      "intent": "Navigation/Tab wechseln",
+      "action": {
+        "type": "click",
+        "id": "Sidemenu.Layout-Admin",
+        "selector": "[wkrad-id=\"Sidemenu.Layout-Admin\"], [data-wkrad-id=\"Sidemenu.Layout-Admin\"]",
+        "source": "learn:element",
+        "_freq": 28,
+        "nodeKey": "5ebd17486411"
+      }
+    },
+    {
+      "t": "2025-10-15T13:14:02.738Z",
+      "phase": "try",
+      "step": 9,
+      "intent": "Navigation/Tab wechseln",
+      "action": {
+        "type": "click",
+        "id": "Sidemenu.TMS(Disposition)",
+        "selector": "[wkrad-id=\"Sidemenu.TMS(Disposition)\"], [data-wkrad-id=\"Sidemenu.TMS(Disposition)\"]",
+        "source": "learn:element",
+        "_freq": 28,
+        "nodeKey": "5ebd17486411"
+      }
+    },
+    {
+      "t": "2025-10-15T13:14:11.019Z",
+      "phase": "try",
+      "step": 10,
+      "intent": "Navigation/Tab wechseln",
+      "action": {
+        "type": "click",
+        "id": "Sidemenu.WMS(Leitstand)",
+        "selector": "[wkrad-id=\"Sidemenu.WMS(Leitstand)\"], [data-wkrad-id=\"Sidemenu.WMS(Leitstand)\"]",
+        "source": "learn:element",
+        "_freq": 28,
+        "nodeKey": "5ebd17486411"
+      }
+    },
+    {
+      "t": "2025-10-15T13:14:19.340Z",
+      "phase": "try",
+      "step": 11,
+      "intent": "Navigation ausführen",
+      "action": {
+        "type": "click",
+        "id": "MainApo.Info",
+        "selector": "[wkrad-id=\"MainApo.Info\"], [data-wkrad-id=\"MainApo.Info\"]",
+        "source": "learn:element",
+        "_freq": 28,
+        "nodeKey": "5ebd17486411"
+      }
+    },
+    {
+      "t": "2025-10-15T13:14:27.634Z",
+      "phase": "try",
+      "step": 12,
+      "intent": "Navigation/Tab wechseln",
+      "action": {
+        "type": "click",
+        "id": "MainApo.SideMenu",
+        "selector": "[wkrad-id=\"MainApo.SideMenu\"], [data-wkrad-id=\"MainApo.SideMenu\"]",
+        "source": "learn:element",
+        "_freq": 28,
+        "nodeKey": "5ebd17486411"
+      }
+    },
+    {
+      "t": "2025-10-15T13:14:35.952Z",
+      "phase": "try",
+      "step": 13,
+      "intent": "Navigation/Tab wechseln",
+      "action": {
+        "type": "click",
+        "id": "Sidemenu.Recherche",
+        "selector": "[wkrad-id=\"Sidemenu.Recherche\"], [data-wkrad-id=\"Sidemenu.Recherche\"]",
+        "source": "learn:element",
+        "_freq": 28,
+        "nodeKey": "5ebd17486411"
+      }
+    },
+    {
+      "t": "2025-10-15T13:14:44.276Z",
+      "phase": "try",
+      "step": 14,
+      "intent": "Navigation/Tab wechseln",
+      "action": {
+        "type": "click",
+        "id": "Sidemenu.Konfigurator",
+        "selector": "[wkrad-id=\"Sidemenu.Konfigurator\"], [data-wkrad-id=\"Sidemenu.Konfigurator\"]",
+        "source": "learn:element",
+        "_freq": 28,
+        "nodeKey": "5ebd17486411"
+      }
+    },
+    {
+      "t": "2025-10-15T13:14:52.602Z",
+      "phase": "try",
+      "step": 15,
+      "intent": "Navigation/Tab wechseln",
+      "action": {
+        "type": "click",
+        "id": "Sidemenu.MDE6",
+        "selector": "[wkrad-id=\"Sidemenu.MDE6\"], [data-wkrad-id=\"Sidemenu.MDE6\"]",
+        "source": "learn:element",
+        "_freq": 28,
+        "nodeKey": "5ebd17486411"
+      }
+    },
+    {
+      "t": "2025-10-15T13:15:00.964Z",
+      "phase": "try",
+      "step": 16,
+      "intent": "Navigation/Tab wechseln",
+      "action": {
+        "type": "click",
+        "id": "Sidemenu.WWM(mobileApp)",
+        "selector": "[wkrad-id=\"Sidemenu.WWM(mobileApp)\"], [data-wkrad-id=\"Sidemenu.WWM(mobileApp)\"]",
+        "source": "learn:element",
+        "_freq": 28,
+        "nodeKey": "5ebd17486411"
+      }
+    },
+    {
+      "t": "2025-10-15T13:15:09.306Z",
+      "phase": "try",
+      "step": 17,
+      "intent": "Navigation/Tab wechseln",
+      "action": {
+        "type": "click",
+        "id": "Sidemenu.MDE6Konfigurator",
+        "selector": "[wkrad-id=\"Sidemenu.MDE6Konfigurator\"], [data-wkrad-id=\"Sidemenu.MDE6Konfigurator\"]",
+        "source": "learn:element",
+        "_freq": 28,
+        "nodeKey": "5ebd17486411"
+      }
+    },
+    {
+      "t": "2025-10-15T13:15:17.744Z",
+      "phase": "try",
+      "step": 18,
+      "intent": "Navigation/Tab wechseln",
+      "action": {
+        "type": "click",
+        "id": "MainApo.SideMenu",
+        "selector": "[wkrad-id=\"MainApo.SideMenu\"], [data-wkrad-id=\"MainApo.SideMenu\"]",
+        "source": "learn:element",
+        "_freq": 28,
+        "nodeKey": "5ebd17486411"
+      }
+    }
+  ],
+  "errors": [
+    {
+      "t": "2025-10-15T13:15:22.316Z",
+      "type": "exec-error",
+      "step": 18,
+      "action": {
+        "type": "click",
+        "id": "MainApo.SideMenu",
+        "selector": "[wkrad-id=\"MainApo.SideMenu\"], [data-wkrad-id=\"MainApo.SideMenu\"]",
+        "source": "learn:element",
+        "_freq": 28,
+        "nodeKey": "5ebd17486411"
+      },
+      "report": {
+        "jsonPath": "Q:\\gedike\\Testagent\\test-output\\reports\\1760534122288_exec_error.json",
+        "imagePath": "Q:\\gedike\\Testagent\\test-output\\reports\\1760534122283_exec_error.png"
+      }
+    },
+    {
+      "t": "2025-10-15T13:15:22.404Z",
+      "type": "fatal",
+      "message": "page.evaluate: Target page, context or browser has been closed"
+    }
+  ],
+  "endedAt": null,
+  "meta": {}
+}

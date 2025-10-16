@@ -1,0 +1,317 @@
+{
+  "startedAt": "2025-10-15T13:24:42.601Z",
+  "label": "explore",
+  "steps": [
+    {
+      "t": "2025-10-15T13:25:00.990Z",
+      "phase": "try",
+      "step": 1,
+      "intent": "Navigation ausführen",
+      "action": {
+        "type": "click",
+        "id": "MainApo.TechnischerName",
+        "selector": "[wkrad-id=\"MainApo.TechnischerName\"], [data-wkrad-id=\"MainApo.TechnischerName\"]",
+        "source": "discover",
+        "score": 2
+      }
+    },
+    {
+      "t": "2025-10-15T13:25:09.244Z",
+      "phase": "try",
+      "step": 2,
+      "intent": "Navigation ausführen",
+      "action": {
+        "type": "click",
+        "id": "MainApo.Hilfe",
+        "selector": "[wkrad-id=\"MainApo.Hilfe\"], [data-wkrad-id=\"MainApo.Hilfe\"]",
+        "source": "discover",
+        "score": 2
+      }
+    },
+    {
+      "t": "2025-10-15T13:25:17.516Z",
+      "phase": "try",
+      "step": 3,
+      "intent": "Navigation ausführen",
+      "action": {
+        "type": "click",
+        "id": "MainApo.Info",
+        "selector": "[wkrad-id=\"MainApo.Info\"], [data-wkrad-id=\"MainApo.Info\"]",
+        "source": "discover",
+        "score": 2
+      }
+    },
+    {
+      "t": "2025-10-15T13:25:25.774Z",
+      "phase": "try",
+      "step": 4,
+      "intent": "Navigation ausführen",
+      "action": {
+        "type": "click",
+        "id": "MainApo.Info",
+        "selector": "[wkrad-id=\"MainApo.Info\"], [data-wkrad-id=\"MainApo.Info\"]",
+        "source": "discover",
+        "score": 3.2
+      }
+    },
+    {
+      "t": "2025-10-15T13:25:34.038Z",
+      "phase": "try",
+      "step": 5,
+      "intent": "Navigation ausführen",
+      "action": {
+        "type": "click",
+        "id": "MainApo.Info",
+        "selector": "[wkrad-id=\"MainApo.Info\"], [data-wkrad-id=\"MainApo.Info\"]",
+        "source": "discover",
+        "score": 3.2
+      }
+    },
+    {
+      "t": "2025-10-15T13:25:42.299Z",
+      "phase": "try",
+      "step": 6,
+      "intent": "Navigation ausführen",
+      "action": {
+        "type": "click",
+        "id": "MainApo.Info",
+        "selector": "[wkrad-id=\"MainApo.Info\"], [data-wkrad-id=\"MainApo.Info\"]",
+        "source": "discover",
+        "score": 3.2
+      }
+    },
+    {
+      "t": "2025-10-15T13:25:50.568Z",
+      "phase": "try",
+      "step": 7,
+      "intent": "Navigation ausführen",
+      "action": {
+        "type": "click",
+        "id": "MainApo.Info",
+        "selector": "[wkrad-id=\"MainApo.Info\"], [data-wkrad-id=\"MainApo.Info\"]",
+        "source": "discover",
+        "score": 3.2
+      }
+    },
+    {
+      "t": "2025-10-15T13:25:58.835Z",
+      "phase": "try",
+      "step": 8,
+      "intent": "Navigation ausführen",
+      "action": {
+        "type": "click",
+        "id": "MainApo.Info",
+        "selector": "[wkrad-id=\"MainApo.Info\"], [data-wkrad-id=\"MainApo.Info\"]",
+        "source": "discover",
+        "score": 3.2
+      }
+    },
+    {
+      "t": "2025-10-15T13:26:07.099Z",
+      "phase": "try",
+      "step": 9,
+      "intent": "Navigation ausführen",
+      "action": {
+        "type": "click",
+        "id": "MainApo.Info",
+        "selector": "[wkrad-id=\"MainApo.Info\"], [data-wkrad-id=\"MainApo.Info\"]",
+        "source": "discover",
+        "score": 3.2
+      }
+    },
+    {
+      "t": "2025-10-15T13:26:15.382Z",
+      "phase": "try",
+      "step": 10,
+      "intent": "Navigation ausführen",
+      "action": {
+        "type": "click",
+        "id": "MainApo.Info",
+        "selector": "[wkrad-id=\"MainApo.Info\"], [data-wkrad-id=\"MainApo.Info\"]",
+        "source": "discover",
+        "score": 3.2
+      }
+    },
+    {
+      "t": "2025-10-15T13:26:23.651Z",
+      "phase": "try",
+      "step": 11,
+      "intent": "Navigation ausführen",
+      "action": {
+        "type": "click",
+        "id": "MainApo.TechnischerName",
+        "selector": "[wkrad-id=\"MainApo.TechnischerName\"], [data-wkrad-id=\"MainApo.TechnischerName\"]",
+        "source": "discover",
+        "score": 1.2
+      }
+    },
+    {
+      "t": "2025-10-15T13:26:31.924Z",
+      "phase": "try",
+      "step": 12,
+      "intent": "Navigation ausführen",
+      "action": {
+        "type": "click",
+        "id": "MainApo.Hilfe",
+        "selector": "[wkrad-id=\"MainApo.Hilfe\"], [data-wkrad-id=\"MainApo.Hilfe\"]",
+        "source": "discover",
+        "score": 1.2
+      }
+    },
+    {
+      "t": "2025-10-15T13:26:40.213Z",
+      "phase": "try",
+      "step": 13,
+      "intent": "Navigation ausführen",
+      "action": {
+        "type": "click",
+        "id": "MainApo.Info",
+        "selector": "[wkrad-id=\"MainApo.Info\"], [data-wkrad-id=\"MainApo.Info\"]",
+        "source": "discover",
+        "score": 0.9500000000000002
+      }
+    },
+    {
+      "t": "2025-10-15T13:26:48.653Z",
+      "phase": "try",
+      "step": 14,
+      "intent": "Navigation ausführen",
+      "action": {
+        "type": "click",
+        "id": "MainApo.Info",
+        "selector": "[wkrad-id=\"MainApo.Info\"], [data-wkrad-id=\"MainApo.Info\"]",
+        "source": "discover",
+        "score": 0.7555555555555555
+      }
+    },
+    {
+      "t": "2025-10-15T13:26:56.991Z",
+      "phase": "try",
+      "step": 15,
+      "intent": "Navigation ausführen",
+      "action": {
+        "type": "click",
+        "id": "MainApo.Info",
+        "selector": "[wkrad-id=\"MainApo.Info\"], [data-wkrad-id=\"MainApo.Info\"]",
+        "source": "discover",
+        "score": 0.6000000000000001
+      }
+    },
+    {
+      "t": "2025-10-15T13:27:05.278Z",
+      "phase": "try",
+      "step": 16,
+      "intent": "Navigation ausführen",
+      "action": {
+        "type": "click",
+        "id": "AppInfoApo(10).AppSettings...",
+        "selector": "[wkrad-id=\"AppInfoApo(10).AppSettings...\"], [data-wkrad-id=\"AppInfoApo(10).AppSettings...\"]",
+        "source": "discover",
+        "score": 0.8
+      }
+    },
+    {
+      "t": "2025-10-15T13:27:13.554Z",
+      "phase": "try",
+      "step": 17,
+      "intent": "Navigation ausführen",
+      "action": {
+        "type": "click",
+        "id": "AppInfoApo(10).AppSettings...",
+        "selector": "[wkrad-id=\"AppInfoApo(10).AppSettings...\"], [data-wkrad-id=\"AppInfoApo(10).AppSettings...\"]",
+        "source": "discover",
+        "score": 2
+      }
+    },
+    {
+      "t": "2025-10-15T13:27:21.904Z",
+      "phase": "try",
+      "step": 18,
+      "intent": "Navigation ausführen",
+      "action": {
+        "type": "click",
+        "id": "AppInfoApo(10).AppSettings...",
+        "selector": "[wkrad-id=\"AppInfoApo(10).AppSettings...\"], [data-wkrad-id=\"AppInfoApo(10).AppSettings...\"]",
+        "source": "discover",
+        "score": 2
+      }
+    },
+    {
+      "t": "2025-10-15T13:27:30.224Z",
+      "phase": "try",
+      "step": 19,
+      "intent": "Navigation ausführen",
+      "action": {
+        "type": "click",
+        "id": "AppInfoApo(10).AppSettings...",
+        "selector": "[wkrad-id=\"AppInfoApo(10).AppSettings...\"], [data-wkrad-id=\"AppInfoApo(10).AppSettings...\"]",
+        "source": "discover",
+        "score": 2
+      }
+    },
+    {
+      "t": "2025-10-15T13:27:38.513Z",
+      "phase": "try",
+      "step": 20,
+      "intent": "Navigation ausführen",
+      "action": {
+        "type": "click",
+        "id": "MainApo.Info",
+        "selector": "[wkrad-id=\"MainApo.Info\"], [data-wkrad-id=\"MainApo.Info\"]",
+        "source": "discover",
+        "score": 2.6545454545454543
+      }
+    },
+    {
+      "t": "2025-10-15T13:28:08.835Z",
+      "phase": "try",
+      "step": 21,
+      "intent": "Navigation ausführen",
+      "action": {
+        "type": "click",
+        "id": "AppInfoApo(10).AppSettings...",
+        "selector": "[wkrad-id=\"AppInfoApo(10).AppSettings...\"], [data-wkrad-id=\"AppInfoApo(10).AppSettings...\"]",
+        "source": "discover",
+        "score": 2
+      }
+    },
+    {
+      "t": "2025-10-15T13:28:17.128Z",
+      "phase": "try",
+      "step": 22,
+      "intent": "Navigation ausführen",
+      "action": {
+        "type": "click",
+        "id": "AppInfoApo(10).AppSettings...",
+        "selector": "[wkrad-id=\"AppInfoApo(10).AppSettings...\"], [data-wkrad-id=\"AppInfoApo(10).AppSettings...\"]",
+        "source": "discover",
+        "score": 2
+      }
+    }
+  ],
+  "errors": [
+    {
+      "t": "2025-10-15T13:28:31.270Z",
+      "type": "exec-error",
+      "step": 22,
+      "action": {
+        "type": "click",
+        "id": "AppInfoApo(10).AppSettings...",
+        "selector": "[wkrad-id=\"AppInfoApo(10).AppSettings...\"], [data-wkrad-id=\"AppInfoApo(10).AppSettings...\"]",
+        "source": "discover",
+        "score": 2
+      },
+      "report": {
+        "jsonPath": "Q:\\gedike\\Testagent\\test-output\\reports\\1760534911258_exec_error.json",
+        "imagePath": "Q:\\gedike\\Testagent\\test-output\\reports\\1760534911250_exec_error.png"
+      }
+    },
+    {
+      "t": "2025-10-15T13:28:31.338Z",
+      "type": "fatal",
+      "message": "EBUSY: resource busy or locked, open 'Q:\\gedike\\Testagent\\memory\\memory.json'"
+    }
+  ],
+  "endedAt": null,
+  "meta": {}
+}

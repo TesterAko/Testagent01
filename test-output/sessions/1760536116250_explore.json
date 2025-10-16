@@ -1,0 +1,352 @@
+{
+  "startedAt": "2025-10-15T13:48:36.251Z",
+  "label": "explore",
+  "steps": [
+    {
+      "t": "2025-10-15T13:49:29.241Z",
+      "phase": "try",
+      "step": 1,
+      "intent": "Navigation ausführen",
+      "action": {
+        "type": "click",
+        "id": "MainApo.TechnischerName",
+        "selector": "[wkrad-id=\"MainApo.TechnischerName\"], [data-wkrad-id=\"MainApo.TechnischerName\"]",
+        "source": "discover",
+        "score": 2,
+        "intentText": "um den technischen Namen der Felder und tabellen zu sehen, die auch so in der Datenbank hinterlegt sind",
+        "intentLine": "KI-Absicht: um den technischen Namen der Felder und tabellen zu sehen, die auch so in der Datenbank hinterlegt sind"
+      }
+    },
+    {
+      "t": "2025-10-15T13:50:03.633Z",
+      "phase": "try",
+      "step": 2,
+      "intent": "Navigation ausführen",
+      "action": {
+        "type": "click",
+        "id": "MainApo.Hilfe",
+        "selector": "[wkrad-id=\"MainApo.Hilfe\"], [data-wkrad-id=\"MainApo.Hilfe\"]",
+        "source": "discover",
+        "score": 1.6,
+        "intentText": "Um zur online Hilfe zu gelangen",
+        "intentLine": "KI-Absicht: Um zur online Hilfe zu gelangen"
+      }
+    },
+    {
+      "t": "2025-10-15T13:50:42.872Z",
+      "phase": "try",
+      "step": 3,
+      "intent": "Navigation ausführen",
+      "action": {
+        "type": "click",
+        "id": "MainApo.Info",
+        "selector": "[wkrad-id=\"MainApo.Info\"], [data-wkrad-id=\"MainApo.Info\"]",
+        "source": "discover",
+        "score": 1.6,
+        "intentText": "Um an die Systeminformationen wie datenbankname und ip zu sehen",
+        "intentLine": "KI-Absicht: Um an die Systeminformationen wie datenbankname und ip zu sehen"
+      }
+    },
+    {
+      "t": "2025-10-15T13:50:51.171Z",
+      "phase": "try",
+      "step": 4,
+      "intent": "Navigation ausführen",
+      "action": {
+        "type": "click",
+        "id": "MainApo.Info",
+        "selector": "[wkrad-id=\"MainApo.Info\"], [data-wkrad-id=\"MainApo.Info\"]",
+        "source": "discover",
+        "score": 2.8000000000000003,
+        "intentText": "Um an die Systeminformationen wie datenbankname und ip zu sehen",
+        "intentLine": "KI-Absicht: Um an die Systeminformationen wie datenbankname und ip zu sehen"
+      }
+    },
+    {
+      "t": "2025-10-15T13:51:17.023Z",
+      "phase": "try",
+      "step": 5,
+      "intent": "Navigation ausführen",
+      "action": {
+        "type": "click",
+        "id": "MainApo.Info",
+        "selector": "[wkrad-id=\"MainApo.Info\"], [data-wkrad-id=\"MainApo.Info\"]",
+        "source": "discover",
+        "score": 2.8000000000000003,
+        "intentText": "Um an die Systeminformationen wie datenbankname und ip zu sehen",
+        "intentLine": "KI-Absicht: Um an die Systeminformationen wie datenbankname und ip zu sehen"
+      }
+    },
+    {
+      "t": "2025-10-15T13:51:29.531Z",
+      "phase": "try",
+      "step": 6,
+      "intent": "Navigation ausführen",
+      "action": {
+        "type": "click",
+        "id": "MainApo.Info",
+        "selector": "[wkrad-id=\"MainApo.Info\"], [data-wkrad-id=\"MainApo.Info\"]",
+        "source": "discover",
+        "score": 2.8000000000000003,
+        "intentText": "Um an die Systeminformationen wie datenbankname und ip zu sehen",
+        "intentLine": "KI-Absicht: Um an die Systeminformationen wie datenbankname und ip zu sehen"
+      }
+    },
+    {
+      "t": "2025-10-15T13:51:38.176Z",
+      "phase": "try",
+      "step": 7,
+      "intent": "Navigation ausführen",
+      "action": {
+        "type": "click",
+        "id": "MainApo.Info",
+        "selector": "[wkrad-id=\"MainApo.Info\"], [data-wkrad-id=\"MainApo.Info\"]",
+        "source": "discover",
+        "score": 2.8000000000000003,
+        "intentText": "Um an die Systeminformationen wie datenbankname und ip zu sehen",
+        "intentLine": "KI-Absicht: Um an die Systeminformationen wie datenbankname und ip zu sehen"
+      }
+    },
+    {
+      "t": "2025-10-15T13:51:46.834Z",
+      "phase": "try",
+      "step": 8,
+      "intent": "Navigation ausführen",
+      "action": {
+        "type": "click",
+        "id": "MainApo.Info",
+        "selector": "[wkrad-id=\"MainApo.Info\"], [data-wkrad-id=\"MainApo.Info\"]",
+        "source": "discover",
+        "score": 2.8000000000000003,
+        "intentText": "Um an die Systeminformationen wie datenbankname und ip zu sehen",
+        "intentLine": "KI-Absicht: Um an die Systeminformationen wie datenbankname und ip zu sehen"
+      }
+    },
+    {
+      "t": "2025-10-15T13:51:55.110Z",
+      "phase": "try",
+      "step": 9,
+      "intent": "Navigation ausführen",
+      "action": {
+        "type": "click",
+        "id": "MainApo.Info",
+        "selector": "[wkrad-id=\"MainApo.Info\"], [data-wkrad-id=\"MainApo.Info\"]",
+        "source": "discover",
+        "score": 2.8000000000000003,
+        "intentText": "Um an die Systeminformationen wie datenbankname und ip zu sehen",
+        "intentLine": "KI-Absicht: Um an die Systeminformationen wie datenbankname und ip zu sehen"
+      }
+    },
+    {
+      "t": "2025-10-15T13:52:52.239Z",
+      "phase": "try",
+      "step": 10,
+      "intent": "zur Touren-/Routenplanung navigieren",
+      "action": {
+        "type": "fill",
+        "id": "Maintab.TourenPlanung.QuickMatch_Filter(pltop).Input",
+        "selector": "[wkrad-id=\"Maintab.TourenPlanung.QuickMatch_Filter(pltop).Input\"], [data-wkrad-id=\"Maintab.TourenPlanung.QuickMatch_Filter(pltop).Input\"]",
+        "source": "discover",
+        "value": "test",
+        "score": 3.9,
+        "intentText": "um ergebnisse in den Listen zu filtern",
+        "intentLine": "KI-Absicht: um ergebnisse in den Listen zu filtern"
+      }
+    },
+    {
+      "t": "2025-10-15T13:52:52.625Z",
+      "phase": "try",
+      "step": 11,
+      "intent": "Navigation ausführen",
+      "action": {
+        "type": "click",
+        "id": "MainApo.Info",
+        "selector": "[wkrad-id=\"MainApo.Info\"], [data-wkrad-id=\"MainApo.Info\"]",
+        "source": "discover",
+        "score": 2.8000000000000003,
+        "intentText": "Um an die Systeminformationen wie datenbankname und ip zu sehen",
+        "intentLine": "KI-Absicht: Um an die Systeminformationen wie datenbankname und ip zu sehen"
+      }
+    },
+    {
+      "t": "2025-10-15T13:53:36.096Z",
+      "phase": "try",
+      "step": 12,
+      "intent": "zur Touren-/Routenplanung navigieren",
+      "action": {
+        "type": "fill",
+        "id": "Maintab.TourenPlanung.pldispst.Input",
+        "selector": "[wkrad-id=\"Maintab.TourenPlanung.pldispst.Input\"], [data-wkrad-id=\"Maintab.TourenPlanung.pldispst.Input\"]",
+        "source": "discover",
+        "value": "test",
+        "score": 3.7,
+        "intentText": "hier gebe ich die Dispostelle ein wo ich die touren disponiere",
+        "intentLine": "KI-Absicht: hier gebe ich die Dispostelle ein wo ich die touren disponiere"
+      }
+    },
+    {
+      "t": "2025-10-15T13:54:13.521Z",
+      "phase": "try",
+      "step": 13,
+      "intent": "zur Touren-/Routenplanung navigieren",
+      "action": {
+        "type": "fill",
+        "id": "Maintab.TourenPlanung.Plan_Date.Input",
+        "selector": "[wkrad-id=\"Maintab.TourenPlanung.Plan_Date.Input\"], [data-wkrad-id=\"Maintab.TourenPlanung.Plan_Date.Input\"]",
+        "source": "discover",
+        "value": "2025-10-15",
+        "score": 3.7,
+        "intentText": "hier gebe ich das plandatum ein, an welchem tag ich die touren plane",
+        "intentLine": "KI-Absicht: hier gebe ich das plandatum ein, an welchem tag ich die touren plane"
+      }
+    },
+    {
+      "t": "2025-10-15T13:54:44.450Z",
+      "phase": "try",
+      "step": 14,
+      "intent": "zur Touren-/Routenplanung navigieren",
+      "action": {
+        "type": "click",
+        "id": "Maintab.TourenPlanung.pldispst.button",
+        "selector": "[wkrad-id=\"Maintab.TourenPlanung.pldispst.button\"], [data-wkrad-id=\"Maintab.TourenPlanung.pldispst.button\"]",
+        "source": "discover",
+        "score": 2.9,
+        "intentText": "bei diesem dropdown kann ich zwischen dispostellen aussuchen und auswählen",
+        "intentLine": "KI-Absicht: bei diesem dropdown kann ich zwischen dispostellen aussuchen und auswählen"
+      }
+    },
+    {
+      "t": "2025-10-15T13:55:33.160Z",
+      "phase": "try",
+      "step": 15,
+      "intent": "zur Touren-/Routenplanung navigieren",
+      "action": {
+        "type": "click",
+        "id": "Maintab.TourenPlanung.Aufträgeanzeigen",
+        "selector": "[wkrad-id=\"Maintab.TourenPlanung.Aufträgeanzeigen\"], [data-wkrad-id=\"Maintab.TourenPlanung.Aufträgeanzeigen\"]",
+        "source": "discover",
+        "score": 3.3,
+        "intentText": "um auf der Karte den Standort der Aufträge zu markieren",
+        "intentLine": "KI-Absicht: um auf der Karte den Standort der Aufträge zu markieren"
+      }
+    },
+    {
+      "t": "2025-10-15T13:55:41.449Z",
+      "phase": "try",
+      "step": 16,
+      "intent": "zur Touren-/Routenplanung navigieren",
+      "action": {
+        "type": "fill",
+        "id": "Maintab.TourenPlanung.QuickMatch_Filter(pltop).Input",
+        "selector": "[wkrad-id=\"Maintab.TourenPlanung.QuickMatch_Filter(pltop).Input\"], [data-wkrad-id=\"Maintab.TourenPlanung.QuickMatch_Filter(pltop).Input\"]",
+        "source": "discover",
+        "value": "test",
+        "score": 3.1,
+        "intentText": "um ergebnisse in den Listen zu filtern",
+        "intentLine": "KI-Absicht: um ergebnisse in den Listen zu filtern"
+      }
+    },
+    {
+      "t": "2025-10-15T13:55:41.833Z",
+      "phase": "try",
+      "step": 17,
+      "intent": "Navigation ausführen",
+      "action": {
+        "type": "click",
+        "id": "MainApo.Info",
+        "selector": "[wkrad-id=\"MainApo.Info\"], [data-wkrad-id=\"MainApo.Info\"]",
+        "source": "discover",
+        "score": 2.5500000000000003,
+        "intentText": "Um an die Systeminformationen wie datenbankname und ip zu sehen",
+        "intentLine": "KI-Absicht: Um an die Systeminformationen wie datenbankname und ip zu sehen"
+      }
+    },
+    {
+      "t": "2025-10-15T13:56:17.567Z",
+      "phase": "try",
+      "step": 18,
+      "intent": "zur Touren-/Routenplanung navigieren",
+      "action": {
+        "type": "click",
+        "id": "Maintab.TourenPlanung.Rückgängig",
+        "selector": "[wkrad-id=\"Maintab.TourenPlanung.Rückgängig\"], [data-wkrad-id=\"Maintab.TourenPlanung.Rückgängig\"]",
+        "source": "discover",
+        "score": 3.4,
+        "intentText": "um eine Aktion wie auftrag auf die tour zu ziehen, rückgängig zu machen",
+        "intentLine": "KI-Absicht: um eine Aktion wie auftrag auf die tour zu ziehen, rückgängig zu machen"
+      }
+    },
+    {
+      "t": "2025-10-15T13:56:55.684Z",
+      "phase": "try",
+      "step": 19,
+      "intent": "zur Touren-/Routenplanung navigieren",
+      "action": {
+        "type": "click",
+        "id": "Maintab.TourenPlanung.Lagerlinienausblenden",
+        "selector": "[wkrad-id=\"Maintab.TourenPlanung.Lagerlinienausblenden\"], [data-wkrad-id=\"Maintab.TourenPlanung.Lagerlinienausblenden\"]",
+        "source": "discover",
+        "score": 3.3,
+        "intentText": "um linien die zwischen lagern auf der Karte ersichtlich sind ein oder auszublenden",
+        "intentLine": "KI-Absicht: um linien die zwischen lagern auf der Karte ersichtlich sind ein oder auszublenden"
+      }
+    },
+    {
+      "t": "2025-10-15T13:59:39.942Z",
+      "phase": "try",
+      "step": 20,
+      "intent": "zur Touren-/Routenplanung navigieren",
+      "action": {
+        "type": "click",
+        "id": "Maintab.TourenPlanung.Reihenfolgeanzeigen",
+        "selector": "[wkrad-id=\"Maintab.TourenPlanung.Reihenfolgeanzeigen\"], [data-wkrad-id=\"Maintab.TourenPlanung.Reihenfolgeanzeigen\"]",
+        "source": "discover",
+        "score": 3.3,
+        "intentText": "um die Reihenfolge der Stopps auf der Karte ersichtlich zu machen",
+        "intentLine": "KI-Absicht: um die Reihenfolge der Stopps auf der Karte ersichtlich zu machen"
+      }
+    },
+    {
+      "t": "2025-10-15T14:00:12.163Z",
+      "phase": "try",
+      "step": 21,
+      "intent": "zur Touren-/Routenplanung navigieren",
+      "action": {
+        "type": "click",
+        "id": "Maintab.TourenPlanung.Fahrzeugeanzeigen",
+        "selector": "[wkrad-id=\"Maintab.TourenPlanung.Fahrzeugeanzeigen\"], [data-wkrad-id=\"Maintab.TourenPlanung.Fahrzeugeanzeigen\"]",
+        "source": "discover",
+        "score": 3.3,
+        "intentText": "Um fahrzeuge und ihren Standort auf der Karte einzublenden",
+        "intentLine": "KI-Absicht: Um fahrzeuge und ihren Standort auf der Karte einzublenden"
+      }
+    }
+  ],
+  "errors": [
+    {
+      "t": "2025-10-15T14:00:19.333Z",
+      "type": "exec-error",
+      "step": 21,
+      "action": {
+        "type": "click",
+        "id": "Maintab.TourenPlanung.Fahrzeugeanzeigen",
+        "selector": "[wkrad-id=\"Maintab.TourenPlanung.Fahrzeugeanzeigen\"], [data-wkrad-id=\"Maintab.TourenPlanung.Fahrzeugeanzeigen\"]",
+        "source": "discover",
+        "score": 3.3,
+        "intentText": "Um fahrzeuge und ihren Standort auf der Karte einzublenden",
+        "intentLine": "KI-Absicht: Um fahrzeuge und ihren Standort auf der Karte einzublenden"
+      },
+      "report": {
+        "jsonPath": "Q:\\gedike\\Testagent\\test-output\\reports\\1760536819310_exec_error.json",
+        "imagePath": "Q:\\gedike\\Testagent\\test-output\\reports\\1760536819307_exec_error.png"
+      }
+    },
+    {
+      "t": "2025-10-15T14:00:19.417Z",
+      "type": "fatal",
+      "message": "page.evaluate: Target page, context or browser has been closed"
+    }
+  ],
+  "endedAt": null,
+  "meta": {}
+}

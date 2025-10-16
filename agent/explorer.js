@@ -1,248 +1,160 @@
 ﻿// agent/explorer.js
-// Autonomer Explorer:
-// - Login via AuthService (ENV/.env + memory/credentials.json), keine Rückfragen
-// - Strict wkrad-id only
-// - Lernend: baut Nav-Graph & Page-States über memory/memory.js auf
-// - Fehler -> Screenshot + recordError
-// - Skip destruktive Aktionen, es sei denn ALLOW_DESTRUCTIVE=true
+// -------------------------------------------------------------
+// Modus 1: Exploratives Testen (Disponenten-Sicht) – KI-gesteuert
+// - Planner (LLM): createPlanner({ mode:'explore' }) bestimmt die nächste Aktion
+// - Executor: führt strikt per wkrad-id aus
+// - Perception: erkennt UI-/Netzwerk-/Console-Fehler
+// - BugReporter: erstellt Reports (Screenshot, DOM, Repro, KI-Zusammenfassung)
+// - Memory: Zustandsgraph (recordOutcome)
 //
-// Node: ESM
+// Neu gegenüber der vorherigen Version:
+// - Perception-Start/Flush eingebaut
+// - BugReporter-Aufrufe mit einheitlicher Payload
+// - Robustere Fehlerpfade
+// -------------------------------------------------------------
 
-import fs from 'fs-extra';
-import path from 'path';
-import { fileURLToPath } from 'url';
-import { chromium } from 'playwright';
-
+import { createPlanner } from './planner.js';
 import { AuthService } from '../services/auth.js';
+import { executeActions } from '../browser/action-executor.js';
+import { BugReporter } from '../services/bug-reporter.js';
 import {
     makeNodeKey,
-    upsertNode,
-    addEdge,
-    nextTargets,
-    recordPageState,
-    recordError,
+    recordOutcome,
+    rememberPage // optional
 } from '../memory/memory.js';
 
-import { executeActions } from '../browser/action-executor.js';
+import {
+    startPerception,
+    detectUiErrors,
+    flushPerception
+} from '../services/perception.js';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const HEADLESS = String(process.env.HEADLESS || 'false').toLowerCase() === 'true';
+const MAX_STEPS = Number(process.env.MAX_STEPS || 80);
+const ACTION_TIMEOUT_MS = Number(process.env.ACTION_TIMEOUT_MS || 10000);
+const IDLE_AFTER_ACTION_MS = Number(process.env.IDLE_AFTER_ACTION_MS || 300);
+const HISTORY_LIMIT = Number(process.env.HISTORY_LIMIT || 30);
 
-// -------- Config / Defaults --------------------------------------------------
+export async function runExploration() {
+    const { browser, page, sessionId } = await AuthService.login({ headless: HEADLESS });
 
-const BASE_URL = process.env.BASE_URL || 'http://localhost:3000';
-const HEADLESS = String(process.env.HEADLESS || 'true').toLowerCase() === 'true';
-const MAX_STEPS = Number(process.env.MAX_STEPS || 60);
-const ALLOW_DESTRUCTIVE = String(process.env.ALLOW_DESTRUCTIVE || 'false').toLowerCase() === 'true';
+    // Perception aktivieren (konsole/network/pageerror)
+    startPerception(page);
 
-const SCREEN_DIR = path.resolve(__dirname, '../test-output/screenshots');
-await fs.ensureDir(SCREEN_DIR);
-
-// -------- Helpers ------------------------------------------------------------
-
-function isDestructiveId(id) {
-    if (ALLOW_DESTRUCTIVE) return false;
-    // konservative Heuristik (Deutsch/Englisch)
-    const bad = /(delete|remove|destroy|drop|truncate|erase|unlink|void|submit|save|speichern|löschen|entfernen|abschicken|übernehmen|bestätigen)/i;
-    return bad.test(id || '');
-}
-
-async function visibleWkradIds(page, limit = 60) {
-    const ids = await page.evaluate((lim) => {
-        const isVisible = (el) => {
-            const cs = getComputedStyle(el);
-            const r = el.getBoundingClientRect();
-            return r.width > 1 && r.height > 1 && cs.visibility !== 'hidden' && cs.display !== 'none' && !el.disabled;
-        };
-        return Array.from(document.querySelectorAll('[wkrad-id], [data-wkrad-id]'))
-            .filter(isVisible)
-            .slice(0, lim)
-            .map(el => el.getAttribute('wkrad-id') || el.getAttribute('data-wkrad-id'))
-            .filter(Boolean);
-    }, limit);
-    return ids;
-}
-
-function toSelector(id) {
-    return `[wkrad-id="${id}"], [data-wkrad-id="${id}"]`;
-}
-
-function dedupeBySelector(actions) {
-    const seen = new Set();
-    return actions.filter(a => {
-        const key = `${a.type}:${a.selector}`;
-        if (seen.has(key)) return false;
-        seen.add(key);
-        return true;
+    const planner = createPlanner({
+        mode: 'explore',
+        allowDestructive: false,
+        candidateLimit: 30,
+        maxDomItems: 60,
+        modelName: process.env.LLM_MODEL
     });
-}
 
-// DOM-Discovery: generiert sichere, nicht-destruktive Default-Aktionen
-async function discoverActions(page, limit = 8) {
-    const actions = await page.evaluate((lim) => {
-        const isVisible = (el) => {
-            const cs = getComputedStyle(el);
-            const r = el.getBoundingClientRect();
-            return r.width > 1 && r.height > 1 && cs.visibility !== 'hidden' && cs.display !== 'none' && !el.disabled;
-        };
-        const pick = (id) => `[wkrad-id="${id}"], [data-wkrad-id="${id}"]`;
+    const history = [];
+    const pushHistory = (entry) => {
+        history.push({ ...entry, t: Date.now() });
+        if (history.length > HISTORY_LIMIT) history.shift();
+    };
 
-        const out = [];
-        const els = Array.from(document.querySelectorAll('[wkrad-id], [data-wkrad-id]')).filter(isVisible);
+    try {
+        let nodeKey = await safeNodeKey(page);
 
-        for (const el of els) {
-            const id = el.getAttribute('wkrad-id') || el.getAttribute('data-wkrad-id');
-            if (!id) continue;
-            const tag = el.tagName.toLowerCase();
-            const role = (el.getAttribute('role') || '').toLowerCase();
-            const type = (el.getAttribute('type') || '').toLowerCase();
-
-            if (tag === 'button' || role === 'button' || tag === 'a') {
-                out.push({ type: 'click', selector: pick(id), id });
-            } else if (tag === 'input' && (type === 'text' || type === 'email' || type === 'search')) {
-                out.push({ type: 'fill', selector: pick(id), value: 'test', id });
-            } else if (tag === 'select') {
-                out.push({ type: 'select', selector: pick(id), value: '', id }); // leere Option → sicher
-            }
-            if (out.length >= lim) break;
-        }
-        return out;
-    }, limit);
-
-    // Filter destruktive Kandidaten
-    const safe = actions.filter(a => !/(password|passwort)/i.test(a.id || ''));
-    return safe;
-}
-
-// -------- Explorer -----------------------------------------------------------
-
-export class Explorer {
-    constructor({ baseUrl = BASE_URL, headless = HEADLESS } = {}) {
-        this.baseUrl = baseUrl;
-        this.headless = headless;
-        this.auth = new AuthService();
-    }
-
-    async _screenshot(page, label) {
-        const file = path.join(SCREEN_DIR, `${Date.now()}_${label || 'shot'}.png`);
-        try { await page.screenshot({ path: file, fullPage: true }); } catch { }
-        return file;
-    }
-
-    async _recordState(page, extra = {}) {
-        const url = page.url();
-        const title = await page.title().catch(() => '');
-        const ids = await visibleWkradIds(page, 80);
-        const sig = await recordPageState({ url, title, visibleIds: ids, extra });
-        return { url, title, ids, sig };
-    }
-
-    // kombiniert: 1) Memory-Targets (untererforschte Kanten) 2) Fresh Discovery
-    async _planNextActions(page, nodeKey, limit = 8) {
-        const memTargets = await nextTargets(nodeKey, Math.max(2, Math.floor(limit / 2))) || [];
-        const disc = await discoverActions(page, limit);
-        const merged = [
-            // Memory-Targets zuerst (falls noch sichtbar)
-            ...memTargets
-                .filter(a => a && a.selector)
-                .map(a => ({ ...a, source: 'memory' })),
-            // dann neue Kandidaten
-            ...disc.map(a => ({ ...a, source: 'discover' })),
-        ]
-            .filter(a => !isDestructiveId(a?.id)) // Sicherheitsfilter
-            .filter(Boolean);
-
-        return dedupeBySelector(merged).slice(0, limit);
-    }
-
-    async run({ page: extPage } = {}) {
-        let browser, context, page;
-
-        try {
-            if (!extPage) {
-                browser = await chromium.launch({ headless: this.headless });
-                context = await browser.newContext();
-                page = await context.newPage();
-                await page.goto(this.baseUrl, { waitUntil: 'domcontentloaded', timeout: 60000 });
-            } else {
-                page = extPage;
+        for (let step = 1; step <= MAX_STEPS; step++) {
+            const action = await planner.planNextAction({ nodeKey, page, history });
+            if (!action) {
+                console.log('ℹ️  Keine weitere Aktion. Exploration endet.');
+                break;
             }
 
-            // --- 1) Login ohne Rückfragen ---
-            await this.auth.ensureLoggedIn(page);
+            const startedAt = Date.now();
+            try {
+                await executeActions(page, [action], { timeoutPerAction: ACTION_TIMEOUT_MS });
+                await waitMs(IDLE_AFTER_ACTION_MS);
 
-            // --- 2) Ersten State/NodKey erfassen ---
-            let nodeA = await makeNodeKey(page);
-            await upsertNode(nodeA, 'Start');
-            await this._recordState(page, { phase: 'start' });
+                const nextNodeKey = await safeNodeKey(page);
 
-            // --- 3) Exploration Loop ---
-            for (let step = 0; step < MAX_STEPS; step++) {
-                // Plan
-                const plans = await this._planNextActions(page, nodeA, 8);
-                if (!plans.length) {
-                    // nichts Sichtbares mehr → fertig
+                await recordOutcome({
+                    fromKey: nodeKey,
+                    toKey: nextNodeKey,
+                    action,
+                    ok: true,
+                    durationMs: Date.now() - startedAt
+                });
+
+                pushHistory({ actionType: action.actionType, wkradId: action.wkradId, value: action.value, url: page.url() });
+
+                // UI-Fehler prüfen → reporten → flushen
+                const uiError = await detectUiErrors(page);
+                if (uiError) {
+                    await BugReporter.reportUiError({
+                        page,
+                        sessionId,
+                        uiError,
+                        recentSteps: [...history],
+                        meta: { nodeKey, nextNodeKey }
+                    });
+                    flushPerception(page);
+                }
+
+                await safeRememberPage(page);
+                nodeKey = nextNodeKey;
+
+            } catch (err) {
+                await recordOutcome({
+                    fromKey: nodeKey,
+                    toKey: nodeKey,
+                    action,
+                    ok: false,
+                    error: String(err?.message || err),
+                    durationMs: Date.now() - startedAt
+                });
+
+                await BugReporter.reportExecError({
+                    page,
+                    sessionId,
+                    error: err,
+                    recentSteps: [...history],
+                    meta: { nodeKey, action }
+                });
+                flushPerception(page);
+
+                if (shouldAbortAfterError(err)) {
+                    console.log('⛔  Schwerer Fehler – Exploration beendet.');
                     break;
                 }
-
-                // Wähle erste sichere Aktion
-                const action = plans[0];
-
-                try {
-                    // Execute (immer 1 Aktion, damit Nav-Graph präzise bleibt)
-                    await executeActions(page, [action], `auto-step-${step}`);
-
-                    // kleine Wartezeit + Netzleerlauf
-                    await page.waitForLoadState('networkidle', { timeout: 15000 }).catch(() => { });
-
-                    // Nachher: neuer Knoten
-                    const nodeB = await makeNodeKey(page);
-                    await upsertNode(nodeB);
-                    await addEdge(nodeA, nodeB, action);
-
-                    await this._recordState(page, { phase: 'after', step, action });
-
-                    // weiter vom neuen Knoten aus
-                    nodeA = nodeB;
-                } catch (err) {
-                    const shot = await this._screenshot(page, `error_step_${step}`);
-                    await recordError({
-                        type: 'explore-exec',
-                        message: String(err?.message || err),
-                        stack: String(err?.stack || ''),
-                        screenshotPath: shot,
-                        pageUrl: page.url(),
-                        context: { step, action }
-                    });
-                    // versuche mit nächster Aktion weiterzumachen
-                    continue;
-                }
             }
-
-        } catch (fatal) {
-            // Top-Level Fehler
-            try {
-                if (page) {
-                    const shot = await this._screenshot(page, 'fatal');
-                    await recordError({
-                        type: 'explore-fatal',
-                        message: String(fatal?.message || fatal),
-                        stack: String(fatal?.stack || ''),
-                        screenshotPath: shot,
-                        pageUrl: page?.url?.() || '',
-                        context: { baseUrl: this.baseUrl }
-                    });
-                }
-            } catch { }
-            throw fatal;
-        } finally {
-            if (browser) await browser.close().catch(() => { });
         }
+
+    } finally {
+        await browser.close();
     }
 }
 
-// Bequemer Compatibility-Export
-export async function runExploration(opts) {
-    const ex = new Explorer();
-    await ex.run(opts);
+// -------------------------------------------------------------
+// Helfer
+// -------------------------------------------------------------
+
+async function safeNodeKey(page) {
+    try {
+        return await makeNodeKey(page);
+    } catch {
+        return `url:${page.url()}`;
+    }
+}
+
+async function safeRememberPage(page) {
+    try {
+        const html = await page.content();
+        await rememberPage(html, []);
+    } catch { }
+}
+
+function shouldAbortAfterError(err) {
+    const msg = String(err?.message || '').toLowerCase();
+    if (msg.includes('access denied')) return true;
+    if (msg.includes('net::err_cert')) return true;
+    return false;
+}
+
+function waitMs(ms) {
+    return new Promise((res) => setTimeout(res, ms));
 }

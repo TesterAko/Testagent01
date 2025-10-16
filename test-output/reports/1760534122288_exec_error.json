@@ -1,0 +1,127 @@
+{
+  "title": "Ausführungsfehler",
+  "createdAt": "2025-10-15T13:15:22.288Z",
+  "url": "http://localhost:3004/#lang=de",
+  "expected": "Aktion \"Navigation/Tab wechseln\" sollte ohne Fehler durchlaufen.",
+  "actual": "Exception: page.evaluate: Target page, context or browser has been closed",
+  "error": {
+    "message": "page.evaluate: Target page, context or browser has been closed",
+    "stack": "page.evaluate: Target page, context or browser has been closed\n    at Explorer._recordState (Q:\\gedike\\Testagent\\agent\\explorer.js:78:32)\n    at async Explorer.run (Q:\\gedike\\Testagent\\agent\\explorer.js:125:35)\n    at async runExploration (Q:\\gedike\\Testagent\\agent\\explorer.js:231:5)\n    at async main (Q:\\gedike\\Testagent\\index.js:94:13)"
+  },
+  "lastSteps": [
+    {
+      "intent": "Navigation/Tab wechseln",
+      "action": {
+        "type": "click",
+        "id": "Sidemenu.Recherche",
+        "selector": "[wkrad-id=\"Sidemenu.Recherche\"], [data-wkrad-id=\"Sidemenu.Recherche\"]",
+        "source": "learn:element"
+      },
+      "outcome": "nostate",
+      "before": {
+        "url": "http://localhost:3004/#lang=de",
+        "title": "Wanko Web",
+        "sig": "01b197510a93"
+      },
+      "after": {
+        "url": "http://localhost:3004/#lang=de",
+        "title": "Wanko Web",
+        "sig": "01b197510a93"
+      }
+    },
+    {
+      "intent": "Navigation/Tab wechseln",
+      "action": {
+        "type": "click",
+        "id": "Sidemenu.Konfigurator",
+        "selector": "[wkrad-id=\"Sidemenu.Konfigurator\"], [data-wkrad-id=\"Sidemenu.Konfigurator\"]",
+        "source": "learn:element"
+      },
+      "outcome": "nostate",
+      "before": {
+        "url": "http://localhost:3004/#lang=de",
+        "title": "Wanko Web",
+        "sig": "01b197510a93"
+      },
+      "after": {
+        "url": "http://localhost:3004/#lang=de",
+        "title": "Wanko Web",
+        "sig": "01b197510a93"
+      }
+    },
+    {
+      "intent": "Navigation/Tab wechseln",
+      "action": {
+        "type": "click",
+        "id": "Sidemenu.MDE6",
+        "selector": "[wkrad-id=\"Sidemenu.MDE6\"], [data-wkrad-id=\"Sidemenu.MDE6\"]",
+        "source": "learn:element"
+      },
+      "outcome": "nostate",
+      "before": {
+        "url": "http://localhost:3004/#lang=de",
+        "title": "Wanko Web",
+        "sig": "01b197510a93"
+      },
+      "after": {
+        "url": "http://localhost:3004/#lang=de",
+        "title": "Wanko Web",
+        "sig": "01b197510a93"
+      }
+    },
+    {
+      "intent": "Navigation/Tab wechseln",
+      "action": {
+        "type": "click",
+        "id": "Sidemenu.WWM(mobileApp)",
+        "selector": "[wkrad-id=\"Sidemenu.WWM(mobileApp)\"], [data-wkrad-id=\"Sidemenu.WWM(mobileApp)\"]",
+        "source": "learn:element"
+      },
+      "outcome": "nostate",
+      "before": {
+        "url": "http://localhost:3004/#lang=de",
+        "title": "Wanko Web",
+        "sig": "01b197510a93"
+      },
+      "after": {
+        "url": "http://localhost:3004/#lang=de",
+        "title": "Wanko Web",
+        "sig": "01b197510a93"
+      }
+    },
+    {
+      "intent": "Navigation/Tab wechseln",
+      "action": {
+        "type": "click",
+        "id": "Sidemenu.MDE6Konfigurator",
+        "selector": "[wkrad-id=\"Sidemenu.MDE6Konfigurator\"], [data-wkrad-id=\"Sidemenu.MDE6Konfigurator\"]",
+        "source": "learn:element"
+      },
+      "outcome": "nostate",
+      "before": {
+        "url": "http://localhost:3004/#lang=de",
+        "title": "Wanko Web",
+        "sig": "01b197510a93"
+      },
+      "after": {
+        "url": "http://localhost:3004/#lang=de",
+        "title": "Wanko Web",
+        "sig": "01b197510a93"
+      }
+    }
+  ],
+  "screenshot": "reports/1760534122283_exec_error.png",
+  "context": {
+    "step": 18,
+    "action": {
+      "type": "click",
+      "id": "MainApo.SideMenu",
+      "selector": "[wkrad-id=\"MainApo.SideMenu\"], [data-wkrad-id=\"MainApo.SideMenu\"]",
+      "source": "learn:element",
+      "_freq": 28,
+      "nodeKey": "5ebd17486411"
+    },
+    "nodeA": "5ebd17486411",
+    "nodeB": "5ebd17486411"
+  }
+}
